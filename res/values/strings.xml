@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">QuestRush</string>
+    <string name="title_activity_main">QuestRush</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_quest_list">QuestList</string>
+    <string name="title_activity_sign_up">SignUp</string>
+
+</resources>
