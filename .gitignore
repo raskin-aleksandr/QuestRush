@@ -17,3 +17,6 @@ local.properties
 proguard/
 # Log Files
 *.log
+
+.idea/workspace.xml
+
