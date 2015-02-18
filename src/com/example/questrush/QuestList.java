@@ -34,7 +34,7 @@ public class QuestList extends Activity implements ServiceConnection {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Intent intent = new Intent(getApplicationContext(), Questions.class);
+                Intent intent = new Intent(getApplicationContext(), AnswerScan.class);
                 intent.putExtra("questID", Quests.getIntance().getQuestsVector().get(position).getQuestID());
                 startActivity(intent);
             }
