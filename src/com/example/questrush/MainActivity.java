@@ -21,9 +21,6 @@ import com.parse.ParseUser;
 public class MainActivity extends Activity {
 
 	ProgressDialog pd;
-	
-    //comment
-    //second comment
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
