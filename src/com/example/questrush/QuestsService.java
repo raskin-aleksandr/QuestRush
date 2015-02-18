@@ -40,7 +40,7 @@ public class QuestsService extends Service implements Runnable{
                     if (e == null){
                         Quests.getIntance().getQuestsVector().clear();
                         for (ParseObject po : questList){
-                            Quests quest = new Quests(po.getObjectId(), po.getString("name"),po.getDate("startTime").toString(),po.getInt("state"));
+                            Quests quest = new Quests(po.getObjectId(), po.getString("name"),po.getDate("startTime"),po.getInt("state"));
                             Quests.getIntance().getQuestsVector().add(quest);
                             activity.update();
                         }

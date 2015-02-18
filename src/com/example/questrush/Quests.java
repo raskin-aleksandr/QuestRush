@@ -1,5 +1,6 @@
 package com.example.questrush;
 
+import java.util.Date;
 import java.util.Vector;
 
 public class Quests {
@@ -27,14 +28,15 @@ public class Quests {
 
     private String questID;
     private String questName;
-    private String questTime;
+    private Date questDate;
+//    private String questTime;
     private int questState;
 
 
-    public Quests(String questID, String questName, String questTime, int questState) {
+    public Quests(String questID, String questName, Date questDate, int questState) {
         this.questID = questID;
         this.questName = questName;
-        this.questTime = questTime;
+        this.questDate = questDate;
         this.questState = questState;
     }
 
@@ -46,8 +48,8 @@ public class Quests {
         return questName;
     }
 
-    public String getQuestTime() {
-        return questTime;
+    public Date getQuestDate() {
+        return questDate;
     }
 
     public int getQuestState() {

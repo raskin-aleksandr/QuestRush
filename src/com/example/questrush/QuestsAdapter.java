@@ -10,6 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
 public class QuestsAdapter extends BaseAdapter {
 
     private Context context;
@@ -18,7 +24,7 @@ public class QuestsAdapter extends BaseAdapter {
         this.context = context;
     }
 
-    public QuestsAdapter(){
+    public QuestsAdapter() {
 
     }
 
@@ -51,7 +57,12 @@ public class QuestsAdapter extends BaseAdapter {
 
         TextView time = (TextView) rl.findViewById(R.id.questTime);
         time.setTextColor(Color.BLACK);
-        time.setText(Quests.getIntance().getQuestsVector().get(i).getQuestTime());
+
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yy HH:mm");
+        df.setTimeZone(TimeZone.getTimeZone("GMT"));
+
+        String formatetDate = df.format(Quests.getIntance().getQuestsVector().get(i).getQuestDate());
+        time.setText(formatetDate);
 
         return rl;
     }
