@@ -42,7 +42,7 @@ public class SignUp extends Activity {
 			user.setUsername(name.getText().toString().toLowerCase());
 			user.setEmail(email.getText().toString());
 			user.setPassword(pass1.getText().toString());
-			ParsePush.subscribeInBackground("A" + name.getText().toString().toLowerCase());
+//			ParsePush.subscribeInBackground("A" + name.getText().toString().toLowerCase());
 			
 			pd = new ProgressDialog(this);
 			pd.setTitle("New account");
