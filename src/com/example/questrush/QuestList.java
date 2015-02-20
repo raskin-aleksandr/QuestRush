@@ -22,6 +22,7 @@ public class QuestList extends Activity implements ServiceConnection {
     private QuestsService questsService;
     ListView lv;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,31 +39,74 @@ public class QuestList extends Activity implements ServiceConnection {
         lv.setAdapter(questsAdapter);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                      @Override
-                                      public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                final String ID = Quests.getIntance().getQuestsVector().get(pos).getQuestID();
+                final String UserID = User.getInstance().getmUser().getObjectId();
 
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(QuestList.this);
+                alertDialogBuilder.setTitle("Do you want to take part?");
+                alertDialogBuilder.setMessage("Click yes to participate");
+                alertDialogBuilder.setCancelable(true);
+                alertDialogBuilder.setIcon(R.drawable.ic_launcher);
 
+                alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        final ParseQuery<ParseObject> query = ParseQuery.getQuery("quests");
+                        query.getInBackground(ID, new GetCallback<ParseObject>() {
 
-//                                          Intent intent = new Intent(getApplicationContext(), AnswerScan.class);
-//                                          intent.putExtra("questID", Quests.getIntance().getQuestsVector().get(position).getQuestID());
-//                                          startActivity(intent);
-                                      }
-                                  }
+                            @Override
+                            public void done(ParseObject parseObject, ParseException e) {
+                                if (e == null) {
+                                    JSONArray participantsJSONArray = parseObject.getJSONArray("participants");
 
-        );
+                                    if (participantsJSONArray.toString().contains(UserID)) {
+                                        Toast.makeText(getApplicationContext(), "You are already signed in!", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else {
+                                        participantsJSONArray.put(UserID);
+                                        parseObject.put("participants", participantsJSONArray);
+                                        parseObject.saveInBackground(new SaveCallback() {
+                                            @Override
+                                            public void done(ParseException e) {
+                                                if (e == null) {
+                                                    Toast.makeText(getApplicationContext(), "You are in!", Toast.LENGTH_LONG).show();
+                                                } else {
+                                                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
+                                    }
+                                }
+                            }
+                        });
+                    }
+                });
+
+                alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        });
     }
 
 
+    public static void start() {
+        System.out.println("!!!!!!!!! start");
+    }
+
     public void update() {
         runOnUiThread(new Runnable() {
-
             @Override
             public void run() {
                 lv.invalidateViews();
-
             }
         });
-
     }
 
     @Override
@@ -80,25 +124,24 @@ public class QuestList extends Activity implements ServiceConnection {
     @Override
     public void onBackPressed() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-
         alertDialogBuilder.setTitle("Exit Application?");
-
         alertDialogBuilder.setMessage("Click yes to exit!");
         alertDialogBuilder.setCancelable(false);
         alertDialogBuilder.setIcon(R.drawable.ic_launcher);
+
         alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-
                 QuestList.this.finish();
             }
         });
+
         alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
             }
         });
-        AlertDialog alertDialog = alertDialogBuilder.create();
 
+        AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
 }

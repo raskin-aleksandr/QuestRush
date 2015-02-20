@@ -87,30 +87,30 @@ public class MainActivity extends Activity {
 		startActivity(new Intent(getApplicationContext(), SignUp.class));
 	}
 	
-	@Override
-	public void onBackPressed() {
-		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        @Override
+        public void onBackPressed() {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
-		alertDialogBuilder.setTitle("Exit Application?");
+            alertDialogBuilder.setTitle("Exit Application?");
 
-		alertDialogBuilder.setMessage("Click yes to exit!");
-		alertDialogBuilder.setCancelable(false);
-		alertDialogBuilder.setIcon(R.drawable.ic_launcher);
-		alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id) {
+            alertDialogBuilder.setMessage("Click yes to exit!");
+            alertDialogBuilder.setCancelable(false);
+            alertDialogBuilder.setIcon(R.drawable.ic_launcher);
+            alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
 
-				MainActivity.this.finish();
-			}
-		});
-		alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id) {
-				dialog.cancel();
-			}
-		});
-		AlertDialog alertDialog = alertDialogBuilder.create();
+                    MainActivity.this.finish();
+                }
+            });
+            alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.cancel();
+                }
+            });
+            AlertDialog alertDialog = alertDialogBuilder.create();
 
-		alertDialog.show();
-	}
+            alertDialog.show();
+        }
 	
 	
 	

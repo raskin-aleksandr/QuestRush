@@ -5,10 +5,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.*;
 
 import java.sql.Time;
 import java.text.DateFormat;
@@ -63,6 +60,9 @@ public class QuestsAdapter extends BaseAdapter {
 
         String formatetDate = df.format(Quests.getIntance().getQuestsVector().get(i).getQuestDate());
         time.setText(formatetDate);
+
+        ImageView iv = (ImageView) rl.findViewById(R.id.startImageView);
+        iv.setImageResource(R.drawable.ic_launcher);
 
         return rl;
     }

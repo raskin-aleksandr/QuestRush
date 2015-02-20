@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.parse.ParseException;
-import com.parse.ParsePush;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
@@ -42,7 +41,6 @@ public class SignUp extends Activity {
 			user.setUsername(name.getText().toString().toLowerCase());
 			user.setEmail(email.getText().toString());
 			user.setPassword(pass1.getText().toString());
-//			ParsePush.subscribeInBackground("A" + name.getText().toString().toLowerCase());
 			
 			pd = new ProgressDialog(this);
 			pd.setTitle("New account");
@@ -62,7 +60,6 @@ public class SignUp extends Activity {
 					else {
 						Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
 					}
-					
 				}
 				
 			});
@@ -70,6 +67,5 @@ public class SignUp extends Activity {
 		else {
 			Toast.makeText(getApplicationContext(), "Passwords do not match", Toast.LENGTH_SHORT).show();
 		}
-
 	}
 }
