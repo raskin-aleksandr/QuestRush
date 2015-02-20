@@ -5,9 +5,10 @@ import android.app.AlertDialog;
 import android.content.*;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.parse.*;
@@ -22,14 +23,14 @@ public class QuestList extends Activity implements ServiceConnection {
 
     static Context context;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quest_list);
 
         this.context = getApplicationContext();
+
+        final String UserID = ParseUser.getCurrentUser().getObjectId();
 
         Intent intent = new Intent(getApplicationContext(), QuestsService.class);
         startService(intent);
@@ -49,8 +50,6 @@ public class QuestList extends Activity implements ServiceConnection {
             public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
 
                 final String ID = Quests.getIntance().getQuestsVector().get(pos).getQuestID();
-                final String UserID = User.getInstance().getmUser().getObjectId();
-
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(QuestList.this);
                 alertDialogBuilder.setTitle("Do you want to take part?");
@@ -135,6 +134,47 @@ public class QuestList extends Activity implements ServiceConnection {
     protected void onDestroy() {
         super.onDestroy();
         unbindService(this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.logout:
+                ParseUser.getCurrentUser().logOut();
+
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+
+                break;
+
+            case R.id.about:
+                AlertDialog.Builder aboutDialogBuilder = new AlertDialog.Builder(QuestList.this);
+                aboutDialogBuilder.setTitle("About Quest Rush");
+                aboutDialogBuilder.setMessage("___");
+                aboutDialogBuilder.setCancelable(true);
+                aboutDialogBuilder.setIcon(R.drawable.ic_launcher);
+
+                aboutDialogBuilder.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog aboutDialog = aboutDialogBuilder.create();
+                aboutDialog.show();
+
+
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

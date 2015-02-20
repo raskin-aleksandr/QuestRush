@@ -68,4 +68,8 @@ public class SignUp extends Activity {
 			Toast.makeText(getApplicationContext(), "Passwords do not match", Toast.LENGTH_SHORT).show();
 		}
 	}
+
+    public void cancel (View v){
+        finish();
+    }
 }

@@ -70,6 +70,7 @@ public class MainActivity extends Activity {
 
 							Intent intent = new Intent(getApplicationContext(), QuestList.class);
 							intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            loginDialog.cancel();
 							startActivity(intent);
 
 						} else {

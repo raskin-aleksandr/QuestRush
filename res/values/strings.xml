@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">QuestRush</string>
-    <string name="title_activity_main">QuestRush</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_quest_list">QuestList</string>
-    <string name="title_activity_sign_up">SignUp</string>
+    <string name="app_name">Quest Rush</string>
+    <string name="title_activity_main">#Quest Rush</string>
+    <string name="title_activity_quest_list">Available Quests</string>
+    <string name="title_activity_sign_up">Sign Up</string>
+
+
     <string name="scan_process_label">Scanning…</string>
     <string name="scan_label">Scan</string>
     <string name="scan_result_label">Last scan result: </string>

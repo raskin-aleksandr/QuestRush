@@ -55,11 +55,11 @@ public class QuestsAdapter extends BaseAdapter {
         TextView time = (TextView) rl.findViewById(R.id.questTime);
         time.setTextColor(Color.BLACK);
 
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yy HH:mm");
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM (EEE) HH:mm");
         df.setTimeZone(TimeZone.getTimeZone("GMT"));
 
         String formatetDate = df.format(Quests.getIntance().getQuestsVector().get(i).getQuestDate());
-        time.setText(formatetDate);
+        time.setText("Starts at: " + formatetDate);
 
         ImageView iv = (ImageView) rl.findViewById(R.id.startImageView);
 
