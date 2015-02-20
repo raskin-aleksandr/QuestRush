@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.parse.*;
 import org.json.JSONArray;
 
+import java.util.Calendar;
+
 
 public class QuestList extends Activity implements ServiceConnection {
 
@@ -47,7 +49,7 @@ public class QuestList extends Activity implements ServiceConnection {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, final int pos, long l) {
 
                 final String ID = Quests.getIntance().getQuestsVector().get(pos).getQuestID();
 
@@ -76,6 +78,18 @@ public class QuestList extends Activity implements ServiceConnection {
                                             @Override
                                             public void done(ParseException e) {
                                                 if (e == null) {
+
+                                                    Calendar cal = Calendar.getInstance();
+                                                    Intent calend = new Intent(Intent.ACTION_EDIT);
+                                                    calend.setType("vnd.android.cursor.item/event");
+                                                    calend.putExtra("title", "Quest Rush: " + Quests.getIntance().getQuestsVector().get(pos).getQuestName());
+                                                    calend.putExtra("description", Quests.getIntance().getQuestsVector().get(pos).getQuestDescription());
+                                                    calend.putExtra("beginTime", Quests.getIntance().getQuestsVector().get(pos).getQuestDate());
+                                                    calend.putExtra("allDay", false);
+                                                    calend.putExtra("endTime", cal.getTimeInMillis()+60*60*1000);
+                                                    startActivity(calend);
+
+
                                                     Toast.makeText(getApplicationContext(), "You are in!", Toast.LENGTH_LONG).show();
                                                 } else {
                                                     Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
