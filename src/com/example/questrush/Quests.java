@@ -29,7 +29,6 @@ public class Quests {
     private String questID;
     private String questName;
     private Date questDate;
-//    private String questTime;
     private int questState;
 
 

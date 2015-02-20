@@ -41,7 +41,7 @@ public class QuestsAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
         RelativeLayout rl;
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -62,7 +62,26 @@ public class QuestsAdapter extends BaseAdapter {
         time.setText(formatetDate);
 
         ImageView iv = (ImageView) rl.findViewById(R.id.startImageView);
-        iv.setImageResource(R.drawable.ic_launcher);
+
+        switch (Quests.getIntance().getQuestsVector().get(i).getQuestState()) {
+            case 1:
+                iv.setImageResource(R.drawable.play_inactive);
+                break;
+            case 2:
+                iv.setImageResource(R.drawable.play_active);
+                break;
+
+        }
+
+//        final QuestList ql = new QuestList();
+
+        iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                System.out.println(Quests.getIntance().getQuestsVector().get(i).getQuestID());
+                QuestList.start(Quests.getIntance().getQuestsVector().get(i).getQuestID());
+            }
+        });
 
         return rl;
     }

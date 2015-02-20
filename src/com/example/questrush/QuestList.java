@@ -2,19 +2,17 @@ package com.example.questrush;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ComponentName;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.ServiceConnection;
+import android.content.*;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.parse.*;
 import org.json.JSONArray;
-import org.json.JSONException;
+
 
 public class QuestList extends Activity implements ServiceConnection {
 
@@ -22,11 +20,16 @@ public class QuestList extends Activity implements ServiceConnection {
     private QuestsService questsService;
     ListView lv;
 
+    static Context context;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quest_list);
+
+        this.context = getApplicationContext();
 
         Intent intent = new Intent(getApplicationContext(), QuestsService.class);
         startService(intent);
@@ -38,11 +41,16 @@ public class QuestList extends Activity implements ServiceConnection {
         lv = (ListView) findViewById(R.id.questListView);
         lv.setAdapter(questsAdapter);
 
+
+
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+
                 final String ID = Quests.getIntance().getQuestsVector().get(pos).getQuestID();
                 final String UserID = User.getInstance().getmUser().getObjectId();
+
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(QuestList.this);
                 alertDialogBuilder.setTitle("Do you want to take part?");
@@ -62,8 +70,7 @@ public class QuestList extends Activity implements ServiceConnection {
 
                                     if (participantsJSONArray.toString().contains(UserID)) {
                                         Toast.makeText(getApplicationContext(), "You are already signed in!", Toast.LENGTH_SHORT).show();
-                                    }
-                                    else {
+                                    } else {
                                         participantsJSONArray.put(UserID);
                                         parseObject.put("participants", participantsJSONArray);
                                         parseObject.saveInBackground(new SaveCallback() {
@@ -91,13 +98,15 @@ public class QuestList extends Activity implements ServiceConnection {
 
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
+
             }
         });
     }
 
 
-    public static void start() {
-        System.out.println("!!!!!!!!! start");
+
+    public static void start(String questID) {
+        Toast.makeText(context, questID, Toast.LENGTH_SHORT).show();
     }
 
     public void update() {
@@ -118,6 +127,13 @@ public class QuestList extends Activity implements ServiceConnection {
 
     @Override
     public void onServiceDisconnected(ComponentName componentName) {
+
+        unbindService(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
         unbindService(this);
     }
 
