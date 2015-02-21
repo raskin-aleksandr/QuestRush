@@ -17,6 +17,7 @@ public class QuestsAdapter extends BaseAdapter {
 
     private Context context;
     private QuestList parent;
+
     QuestsAdapter(Context context, QuestList parent) {
         this.context = context;
         this.parent = parent;
@@ -63,27 +64,30 @@ public class QuestsAdapter extends BaseAdapter {
 
         ImageView iv = (ImageView) rl.findViewById(R.id.startImage);
 
-        switch (Quests.getIntance().getQuestsVector().get(i).getQuestState()) {
-            case 1:
-                iv.setImageResource(R.drawable.play_inactive);
-                break;
-            case 2:
-                iv.setImageResource(R.drawable.play_active);
-                break;
 
+        Date curTime = new Date();
+        curTime.getTime();
+
+
+        if (Quests.getIntance().getQuestsVector().get(i).getQuestDate().getTime() < curTime.getTime()) {
+            iv.setImageResource(R.drawable.play_active);
         }
+        else{
+            iv.setImageResource(R.drawable.play_inactive);
+        }
+
 
         final QuestList ql = new QuestList();
 
         iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                System.out.println(Quests.getIntance().getQuestsVector().get(i).getQuestID());
-                //QuestList.start(Quests.getIntance().getQuestsVector().get(i).getQuestID());
-                parent.start(Quests.getIntance().getQuestsVector().get(i).getQuestID());
+                parent.start(Quests.getIntance().getQuestsVector().get(i).getQuestID(), Quests.getIntance().getQuestsVector().get(i).getQuestDate());
             }
         });
 
         return rl;
     }
+
+
 }

@@ -2,10 +2,12 @@ package com.example.questrush;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.*;
+import android.content.ComponentName;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.provider.CalendarContract;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,9 +17,8 @@ import android.widget.Toast;
 import com.parse.*;
 import org.json.JSONArray;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.TimeZone;
+import java.util.Date;
 
 
 public class QuestList extends Activity implements ServiceConnection {
@@ -25,8 +26,6 @@ public class QuestList extends Activity implements ServiceConnection {
     private QuestsAdapter questsAdapter;
     private QuestsService questsService;
     ListView lv;
-
-    static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +45,6 @@ public class QuestList extends Activity implements ServiceConnection {
 
         lv = (ListView) findViewById(R.id.questListView);
         lv.setAdapter(questsAdapter);
-
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -118,10 +116,31 @@ public class QuestList extends Activity implements ServiceConnection {
     }
 
 
-    public void start(String questID) {
+    public void start(String questID, Date questDate) {
 
-        Toast.makeText(context, questID, Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(getApplicationContext(), QuestionActivity.class));
+        Date time = new Date();
+        time.getTime();
+
+        System.out.println("T: " + time.getTime());
+
+        if (time.getTime() > questDate.getTime()) {
+            startActivity(new Intent(getApplicationContext(), QuestionActivity.class));
+        }
+        else {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(QuestList.this);
+            alertDialogBuilder.setTitle("To early");
+            alertDialogBuilder.setMessage("Please wait until " + questDate);
+            alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.cancel();
+                }
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }
+
+//        startActivity(new Intent(getApplicationContext(), QuestionActivity.class));
     }
 
     public void update() {
