@@ -10,14 +10,14 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Question Description"
-            android:id="@+id/textView"
+            android:id="@+id/questionDescription"
             android:layout_weight = "1"/>
     <TextView
             android:layout_width="fill_parent"
             android:layout_height="449dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Medium Text"
-            android:id="@+id/textView2" android:layout_gravity="center_horizontal"
+            android:id="@+id/questionText" android:layout_gravity="center_horizontal"
             />
     <FrameLayout
             android:layout_width="match_parent"
@@ -27,7 +27,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Submit"
-            android:id="@+id/button" android:layout_gravity="center_horizontal"
+            android:id="@+id/submitButton" android:layout_gravity="center_horizontal"
             android:onClick="onSubmit"
             android:layout_weight = "1"/>
 </LinearLayout>

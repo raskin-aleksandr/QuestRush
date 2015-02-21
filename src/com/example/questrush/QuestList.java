@@ -120,8 +120,10 @@ public class QuestList extends Activity implements ServiceConnection {
 
     public void start(String questID) {
 
-        Toast.makeText(context, questID, Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(getApplicationContext(), QuestionActivity.class));
+        Toast.makeText(getApplicationContext(), questID, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getApplicationContext(), QuestionActivity.class);
+        intent.putExtra("quest_id", questID);
+        startActivity(intent);
     }
 
     public void update() {
