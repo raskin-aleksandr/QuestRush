@@ -29,16 +29,15 @@ public class Quests {
     private String questID;
     private String questName;
     private String questDescription;
+    private String questDescriptionShort;
     private Date questDate;
     private int questState;
 
-
-
-
-    public Quests(String questID, String questName, String questDescription, Date questDate, int questState) {
+    public Quests(String questID, String questName,String questDescriptionShort, String questDescription, Date questDate, int questState) {
         this.questID = questID;
         this.questName = questName;
         this.questDescription = questDescription;
+        this.questDescriptionShort = questDescriptionShort;
 
         this.questDate = questDate;
         this.questState = questState;
@@ -62,5 +61,9 @@ public class Quests {
 
     public String getQuestDescription() {
         return questDescription;
+    }
+
+    public String getQuestDescriptionShort() {
+        return questDescriptionShort;
     }
 }

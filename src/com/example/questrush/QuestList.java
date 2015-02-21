@@ -117,13 +117,31 @@ public class QuestList extends Activity implements ServiceConnection {
     }
 
 
+    public void start(String questID, Date questDate) {
 
-    public void start(String questID) {
+        Date time = new Date();
+        time.getTime();
 
-        Toast.makeText(getApplicationContext(), questID, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(getApplicationContext(), QuestionActivity.class);
-        intent.putExtra("quest_id", questID);
-        startActivity(intent);
+        System.out.println("T: " + time.getTime());
+
+        if (time.getTime() > questDate.getTime()) {
+            startActivity(new Intent(getApplicationContext(), QuestionActivity.class));
+        }
+        else {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(QuestList.this);
+            alertDialogBuilder.setTitle("To early");
+            alertDialogBuilder.setMessage("Please wait until " + questDate);
+            alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.cancel();
+                }
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }
+
+//        startActivity(new Intent(getApplicationContext(), QuestionActivity.class));
     }
 
     public void update() {
@@ -163,7 +181,7 @@ public class QuestList extends Activity implements ServiceConnection {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.logout:
                 ParseUser.getCurrentUser().logOut();
 

@@ -17,6 +17,7 @@ public class QuestsAdapter extends BaseAdapter {
 
     private Context context;
     private QuestList parent;
+
     QuestsAdapter(Context context, QuestList parent) {
         this.context = context;
         this.parent = parent;
@@ -48,7 +49,11 @@ public class QuestsAdapter extends BaseAdapter {
         name.setTextColor(Color.BLACK);
         name.setText(Quests.getIntance().getQuestsVector().get(i).getQuestName());
 
-        TextView time = (TextView) rl.findViewById(R.id.questTime);
+        TextView descriptionShort = (TextView) rl.findViewById(R.id.shortDescription);
+        descriptionShort.setTextColor(Color.BLACK);
+        descriptionShort.setText(Quests.getIntance().getQuestsVector().get(i).getQuestDescriptionShort());
+
+        TextView time = (TextView) rl.findViewById(R.id.time);
         time.setTextColor(Color.BLACK);
 
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM (EEE) HH:mm");
@@ -57,29 +62,32 @@ public class QuestsAdapter extends BaseAdapter {
         String formattedDate = df.format(Quests.getIntance().getQuestsVector().get(i).getQuestDate());
         time.setText("Starts at: " + formattedDate);
 
-        ImageView iv = (ImageView) rl.findViewById(R.id.startImageView);
+        ImageView iv = (ImageView) rl.findViewById(R.id.startImage);
 
-        switch (Quests.getIntance().getQuestsVector().get(i).getQuestState()) {
-            case 1:
-                iv.setImageResource(R.drawable.play_inactive);
-                break;
-            case 2:
-                iv.setImageResource(R.drawable.play_active);
-                break;
 
+        Date curTime = new Date();
+        curTime.getTime();
+
+
+        if (Quests.getIntance().getQuestsVector().get(i).getQuestDate().getTime() < curTime.getTime()) {
+            iv.setImageResource(R.drawable.play_active);
+        }
+        else{
+            iv.setImageResource(R.drawable.play_inactive);
         }
 
-//        final QuestList ql = new QuestList();
+
+        final QuestList ql = new QuestList();
 
         iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                System.out.println(Quests.getIntance().getQuestsVector().get(i).getQuestID());
-                //QuestList.start(Quests.getIntance().getQuestsVector().get(i).getQuestID());
-                parent.start(Quests.getIntance().getQuestsVector().get(i).getQuestID());
+                parent.start(Quests.getIntance().getQuestsVector().get(i).getQuestID(), Quests.getIntance().getQuestsVector().get(i).getQuestDate());
             }
         });
 
         return rl;
     }
+
+
 }
