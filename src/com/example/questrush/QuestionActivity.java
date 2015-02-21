@@ -33,7 +33,8 @@ public class QuestionActivity extends Activity {
             public void done(List<ParseObject> list, ParseException e) {
                 if ( e == null) {
                     if (list.isEmpty()) {
-                        throw new RuntimeException("Empty question list received");
+                        Toast.makeText(getApplicationContext(), "This Quest doesn not contain tasks!", Toast.LENGTH_LONG).show();
+                        finish();
                     }
                     questionList = list;
                     randMachine = new Random();
