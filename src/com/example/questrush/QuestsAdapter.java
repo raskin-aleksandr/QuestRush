@@ -16,13 +16,10 @@ import java.util.TimeZone;
 public class QuestsAdapter extends BaseAdapter {
 
     private Context context;
-
-    QuestsAdapter(Context context) {
+    private QuestList parent;
+    QuestsAdapter(Context context, QuestList parent) {
         this.context = context;
-    }
-
-    public QuestsAdapter() {
-
+        this.parent = parent;
     }
 
     @Override
@@ -42,11 +39,10 @@ public class QuestsAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
-        RelativeLayout rl;
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        rl = (RelativeLayout) inflater.inflate(R.layout.quest, viewGroup, false);
+        RelativeLayout rl = (RelativeLayout) inflater.inflate(R.layout.quest, viewGroup, false);
 
         TextView name = (TextView) rl.findViewById(R.id.questName);
         name.setTextColor(Color.BLACK);
@@ -58,8 +54,8 @@ public class QuestsAdapter extends BaseAdapter {
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM (EEE) HH:mm");
         df.setTimeZone(TimeZone.getTimeZone("GMT"));
 
-        String formatetDate = df.format(Quests.getIntance().getQuestsVector().get(i).getQuestDate());
-        time.setText("Starts at: " + formatetDate);
+        String formattedDate = df.format(Quests.getIntance().getQuestsVector().get(i).getQuestDate());
+        time.setText("Starts at: " + formattedDate);
 
         ImageView iv = (ImageView) rl.findViewById(R.id.startImageView);
 
@@ -79,7 +75,8 @@ public class QuestsAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
 //                System.out.println(Quests.getIntance().getQuestsVector().get(i).getQuestID());
-                QuestList.start(Quests.getIntance().getQuestsVector().get(i).getQuestID());
+                //QuestList.start(Quests.getIntance().getQuestsVector().get(i).getQuestID());
+                parent.start(Quests.getIntance().getQuestsVector().get(i).getQuestID());
             }
         });
 

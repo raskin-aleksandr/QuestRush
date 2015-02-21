@@ -39,7 +39,7 @@ public class QuestList extends Activity implements ServiceConnection {
 
         bindService(intent, this, 0);
 
-        questsAdapter = new QuestsAdapter(getApplicationContext());
+        questsAdapter = new QuestsAdapter(getApplicationContext(), this);
 
         lv = (ListView) findViewById(R.id.questListView);
         lv.setAdapter(questsAdapter);
@@ -80,14 +80,14 @@ public class QuestList extends Activity implements ServiceConnection {
                                                 if (e == null) {
 
                                                     Calendar cal = Calendar.getInstance();
-                                                    Intent calend = new Intent(Intent.ACTION_EDIT);
-                                                    calend.setType("vnd.android.cursor.item/event");
-                                                    calend.putExtra("title", "Quest Rush: " + Quests.getIntance().getQuestsVector().get(pos).getQuestName());
-                                                    calend.putExtra("description", Quests.getIntance().getQuestsVector().get(pos).getQuestDescription());
-                                                    calend.putExtra("beginTime", Quests.getIntance().getQuestsVector().get(pos).getQuestDate());
-                                                    calend.putExtra("allDay", false);
-                                                    calend.putExtra("endTime", cal.getTimeInMillis()+60*60*1000);
-                                                    startActivity(calend);
+                                                    Intent calendarIntent = new Intent(Intent.ACTION_EDIT);
+                                                    calendarIntent.setType("vnd.android.cursor.item/event");
+                                                    calendarIntent.putExtra("title", "Quest Rush: " + Quests.getIntance().getQuestsVector().get(pos).getQuestName());
+                                                    calendarIntent.putExtra("description", Quests.getIntance().getQuestsVector().get(pos).getQuestDescription());
+                                                    calendarIntent.putExtra("beginTime", Quests.getIntance().getQuestsVector().get(pos).getQuestDate());
+                                                    calendarIntent.putExtra("allDay", false);
+                                                    calendarIntent.putExtra("endTime", cal.getTimeInMillis() + 60 * 60 * 1000);
+                                                    startActivity(calendarIntent);
 
 
                                                     Toast.makeText(getApplicationContext(), "You are in!", Toast.LENGTH_LONG).show();
@@ -118,8 +118,10 @@ public class QuestList extends Activity implements ServiceConnection {
 
 
 
-    public static void start(String questID) {
+    public void start(String questID) {
+
         Toast.makeText(context, questID, Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getApplicationContext(), QuestionActivity.class));
     }
 
     public void update() {
