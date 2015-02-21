@@ -48,7 +48,11 @@ public class QuestsAdapter extends BaseAdapter {
         name.setTextColor(Color.BLACK);
         name.setText(Quests.getIntance().getQuestsVector().get(i).getQuestName());
 
-        TextView time = (TextView) rl.findViewById(R.id.questTime);
+        TextView descriptionShort = (TextView) rl.findViewById(R.id.shortDescription);
+        descriptionShort.setTextColor(Color.BLACK);
+        descriptionShort.setText(Quests.getIntance().getQuestsVector().get(i).getQuestDescriptionShort());
+
+        TextView time = (TextView) rl.findViewById(R.id.time);
         time.setTextColor(Color.BLACK);
 
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM (EEE) HH:mm");
@@ -57,7 +61,7 @@ public class QuestsAdapter extends BaseAdapter {
         String formattedDate = df.format(Quests.getIntance().getQuestsVector().get(i).getQuestDate());
         time.setText("Starts at: " + formattedDate);
 
-        ImageView iv = (ImageView) rl.findViewById(R.id.startImageView);
+        ImageView iv = (ImageView) rl.findViewById(R.id.startImage);
 
         switch (Quests.getIntance().getQuestsVector().get(i).getQuestState()) {
             case 1:
@@ -69,7 +73,7 @@ public class QuestsAdapter extends BaseAdapter {
 
         }
 
-//        final QuestList ql = new QuestList();
+        final QuestList ql = new QuestList();
 
         iv.setOnClickListener(new View.OnClickListener() {
             @Override

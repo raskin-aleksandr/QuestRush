@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.*;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.provider.CalendarContract;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +15,9 @@ import android.widget.Toast;
 import com.parse.*;
 import org.json.JSONArray;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.TimeZone;
 
 
 public class QuestList extends Activity implements ServiceConnection {
@@ -30,7 +33,7 @@ public class QuestList extends Activity implements ServiceConnection {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quest_list);
 
-        this.context = getApplicationContext();
+//        this.context = getApplicationContext();
 
         final String UserID = ParseUser.getCurrentUser().getObjectId();
 
@@ -45,7 +48,6 @@ public class QuestList extends Activity implements ServiceConnection {
         lv.setAdapter(questsAdapter);
 
 
-
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -55,7 +57,7 @@ public class QuestList extends Activity implements ServiceConnection {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(QuestList.this);
                 alertDialogBuilder.setTitle("Do you want to take part?");
-                alertDialogBuilder.setMessage("Click yes to participate");
+                alertDialogBuilder.setMessage(Quests.getIntance().getQuestsVector().get(pos).getQuestDescription() + "\nClick yes to participate");
                 alertDialogBuilder.setCancelable(true);
                 alertDialogBuilder.setIcon(R.drawable.ic_launcher);
 
@@ -84,11 +86,10 @@ public class QuestList extends Activity implements ServiceConnection {
                                                     calendarIntent.setType("vnd.android.cursor.item/event");
                                                     calendarIntent.putExtra("title", "Quest Rush: " + Quests.getIntance().getQuestsVector().get(pos).getQuestName());
                                                     calendarIntent.putExtra("description", Quests.getIntance().getQuestsVector().get(pos).getQuestDescription());
-                                                    calendarIntent.putExtra("beginTime", Quests.getIntance().getQuestsVector().get(pos).getQuestDate());
+                                                    calendarIntent.putExtra("beginTime", Quests.getIntance().getQuestsVector().get(pos).getQuestDate().getTime());
                                                     calendarIntent.putExtra("allDay", false);
-                                                    calendarIntent.putExtra("endTime", cal.getTimeInMillis() + 60 * 60 * 1000);
+                                                    calendarIntent.putExtra("endTime", Quests.getIntance().getQuestsVector().get(pos).getQuestDate().getTime() + 1 * 60 * 1000);
                                                     startActivity(calendarIntent);
-
 
                                                     Toast.makeText(getApplicationContext(), "You are in!", Toast.LENGTH_LONG).show();
                                                 } else {
@@ -115,7 +116,6 @@ public class QuestList extends Activity implements ServiceConnection {
             }
         });
     }
-
 
 
     public void start(String questID) {
@@ -161,7 +161,7 @@ public class QuestList extends Activity implements ServiceConnection {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.logout:
                 ParseUser.getCurrentUser().logOut();
 
