@@ -46,9 +46,9 @@ public class MainActivity extends Activity {
 
 		final Dialog loginDialog = new Dialog(this);
 		loginDialog.setContentView(R.layout.login);
-		loginDialog.setTitle("Login");
+		loginDialog.setTitle(getString(R.string.login_login));
 
-		Button loginButton = (Button) loginDialog.findViewById(R.id.login);
+		Button loginButton = (Button) loginDialog.findViewById(R.id.loginB);
 		loginButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -57,8 +57,8 @@ public class MainActivity extends Activity {
 				EditText password = (EditText) loginDialog.findViewById(R.id.loginPassword);
 
 				pd = new ProgressDialog(MainActivity.this);
-				pd.setTitle("Login");
-				pd.setMessage("Loggin in..");
+				pd.setTitle(getString(R.string.login_login));
+				pd.setMessage(getString(R.string.loggin_in));
 				pd.show();
 
 				ParseUser.logInInBackground(name.getText().toString(), password.getText().toString(), new LogInCallback() {
@@ -92,18 +92,18 @@ public class MainActivity extends Activity {
         public void onBackPressed() {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
-            alertDialogBuilder.setTitle("Exit Application?");
+            alertDialogBuilder.setTitle(getString(R.string.exit_title));
 
-            alertDialogBuilder.setMessage("Click yes to exit!");
+            alertDialogBuilder.setMessage(getString(R.string.exit_message));
             alertDialogBuilder.setCancelable(false);
             alertDialogBuilder.setIcon(R.drawable.ic_launcher);
-            alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            alertDialogBuilder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
 
                     MainActivity.this.finish();
                 }
             });
-            alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            alertDialogBuilder.setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     dialog.cancel();
                 }

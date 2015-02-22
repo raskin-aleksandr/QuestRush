@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Quest Rush</string>
+    <string name="title_activity_quest_list">Доступные квесты</string>
+    <string name="title_activity_sign_up">Зарегистрироваться</string>
+
+    <string name="main_login_with">Войти</string>
+    <string name="main_create_new">Создать учетную запись</string>
+
+    <string name="login_login">Войти</string>
+    <string name="login_enter_password">введите пароль</string>
+    <string name="login_login_button">Войти</string>
+
+    <string name="sign_up_title">Регистрация</string>
+    <string name="sign_up_enter_name">введите ваше имя</string>
+    <string name="sign_up_enter_email">введите e-mail</string>
+    <string name="sign_up_password">введите пароль</string>
+    <string name="sign_up_cancel">Отмена</string>
+    <string name="sign_up_create">Создать учетную запись</string>
+
+    <string name="quests_title">Доступные квесты</string>
+    <string name="quests_starts_at">Старт:</string>
+    <string name="quests_to_early">Слишком рано</string>
+    <string name="quests_please_wait">Пожалуйста дождитесь:</string>
+    <string name="quests_you_are_in">Вы записаны!</string>
+    <string name="quests_already_in">Вы уже записались!</string>
+    <string name="quests_take_a_part">Хотите принять участие?</string>
+    <string name="quests_click_yes">Нажми да для участия</string>
+
+    <string name="about">О приложении</string>
+    <string name="log_out">Выйти</string>
+
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+
+    <string name="scan_process_label">Сканируется…</string>
+    <string name="scan_label">Scan</string>
+    <string name="scan_result_label">Last scan result: </string>
+    <string name="login_enter_login">введите имя пользователя</string>
+    <string name="exit_message">Нажми Да для выхода</string>
+    <string name="exit_title">Выйти из приложения?</string>
+    <string name="loggin_in">Происходит вход..</string>
+    <string name="sign_up_new_acc">Новая учетная запись</string>
+    <string name="sugn_up_saving">Сохранение..</string>
+    <string name="sign_up_created">Учетная запись создана</string>
+    <string name="sign_up_password_do_not_match">Пароли не совпадают</string>
+    <string name="quest_list_do_you_want">Хотите прянять участие?</string>
+
+</resources>

@@ -2,13 +2,54 @@
 <resources>
 
     <string name="app_name">Quest Rush</string>
-    <string name="title_activity_main">#Quest Rush</string>
+    <string name="title_activity_main" translatable="false">#Quest Rush</string>
     <string name="title_activity_quest_list">Available Quests</string>
     <string name="title_activity_sign_up">Sign Up</string>
 
+    <string name="main_login_with">Login with existing account</string>
+    <string name="main_create_new">Create new account</string>
+
+    <string name="login_login">Login</string>
+    <string name="login_enter_login">enter login</string>
+    <string name="login_enter_password">enter password</string>
+    <string name="login_login_button">Login</string>
+    <string name="loggin_in">Loggin in..</string>
+
+    <string name="exit_title">Exit Application?</string>
+    <string name="exit_message">Click yes to exit!</string>
+
+    <string name="sign_up_title">Sign Up</string>
+    <string name="sign_up_enter_name">enter your name</string>
+    <string name="sign_up_enter_email">enter your e-mail</string>
+    <string name="sign_up_password">enter password</string>
+    <string name="sign_up_cancel">Cancel</string>
+    <string name="sign_up_create">Create Account</string>
+
+    <string name="sign_up_new_acc">New account</string>
+    <string name="sugn_up_saving">Saving..</string>
+
+    <string name="quests_title">Available Quests</string>
+    <string name="quests_starts_at">Starts at: </string>
+    <string name="quests_to_early">To early</string>
+    <string name="quests_please_wait">Please wait until:</string>
+    <string name="quests_ok" translatable="false">OK</string>
+    <string name="quests_you_are_in">You are in!</string>
+    <string name="quests_already_in">You are already in!</string>
+    <string name="quests_take_a_part">Do you want to take a part?</string>
+    <string name="quests_click_yes">Click yes to participate</string>
+
+    <string name="about">About</string>
+    <string name="log_out">Log out</string>
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
     <string name="scan_process_label">Scanning…</string>
     <string name="scan_label">Scan</string>
     <string name="scan_result_label">Last scan result: </string>
+    <string name="sign_up_created">account created</string>
+    <string name="sign_up_password_do_not_match">Passwords do not match</string>
+    <string name="quest_list_do_you_want">Do you want to take part?</string>
+    <string name="qust_list_clik_yes_to_part">Click yes to participate</string>
 
 </resources>

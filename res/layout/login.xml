@@ -10,7 +10,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:ems="10"
-        android:hint="enter login"
+        android:hint="@string/login_enter_login"
         android:inputType="textPersonName" >
 
         <requestFocus />
@@ -23,15 +23,15 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/loginName"
         android:ems="10"
-        android:hint="enter password"
+        android:hint="@string/login_enter_password"
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/loginB"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/loginPassword"
-        android:text="Login" />
+        android:layout_below="@id/loginPassword"
+        android:text="@string/login_login_button" />
 
 </RelativeLayout>

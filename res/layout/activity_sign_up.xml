@@ -14,7 +14,7 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="15dp"
         android:ems="10"
-        android:hint="enter your name"
+        android:hint="@string/sign_up_enter_name"
         android:inputType="textPersonName" >
 
         <requestFocus />
@@ -29,7 +29,7 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="15dp"
         android:ems="10"
-        android:hint="enter your e-mail"
+        android:hint="@string/sign_up_enter_email"
         android:inputType="textEmailAddress" />
 
     <EditText
@@ -42,7 +42,7 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="15dp"
         android:ems="10"
-        android:hint="enter password"
+        android:hint="@string/sign_up_password"
         android:inputType="textPassword" />
 
     <EditText
@@ -55,7 +55,7 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="15dp"
         android:ems="10"
-        android:hint="enter password"
+        android:hint="@string/sign_up_password"
         android:inputType="textPassword" />
 
     <Button
@@ -65,9 +65,8 @@
         android:layout_alignLeft="@+id/newPassword2"
         android:layout_below="@+id/newPassword2"
         android:layout_marginTop="22dp"
-        android:layout_toLeftOf="@+id/button2"
         android:onClick="cancel"
-        android:text="Cancel" />
+        android:text="@string/sign_up_cancel" />
 
     <Button
         android:id="@+id/create"
@@ -76,6 +75,6 @@
         android:layout_alignRight="@+id/newPassword2"
         android:layout_alignTop="@+id/cancel"
         android:onClick="create"
-        android:text="Create Account" />
+        android:text="@string/sign_up_create" />
 
 </RelativeLayout>

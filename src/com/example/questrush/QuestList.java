@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.parse.*;
 import org.json.JSONArray;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -55,12 +56,12 @@ public class QuestList extends Activity implements ServiceConnection {
                 final String ID = Quests.getIntance().getQuestsVector().get(pos).getQuestID();
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(QuestList.this);
-                alertDialogBuilder.setTitle("Do you want to take part?");
-                alertDialogBuilder.setMessage("Click yes to participate");
+                alertDialogBuilder.setTitle(getString(R.string.quest_list_do_you_want));
+                alertDialogBuilder.setMessage(getString(R.string.qust_list_clik_yes_to_part));
                 alertDialogBuilder.setCancelable(true);
                 alertDialogBuilder.setIcon(R.drawable.ic_launcher);
 
-                alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         final ParseQuery<ParseObject> query = ParseQuery.getQuery("quests");
                         query.getInBackground(ID, new GetCallback<ParseObject>() {
@@ -120,6 +121,10 @@ public class QuestList extends Activity implements ServiceConnection {
 
     public void start(String questID, Date questDate) {
 
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM (EEE) HH:mm");
+
+        String formattedDate = df.format(questDate);
+
         Date time = new Date();
         time.getTime();
 
@@ -130,9 +135,9 @@ public class QuestList extends Activity implements ServiceConnection {
         }
         else {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(QuestList.this);
-            alertDialogBuilder.setTitle("To early");
-            alertDialogBuilder.setMessage("Please wait until " + questDate);
-            alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            alertDialogBuilder.setTitle(getString(R.string.quests_to_early));
+            alertDialogBuilder.setMessage(getString(R.string.quests_starts_at) + formattedDate);
+            alertDialogBuilder.setPositiveButton(getString(R.string.quests_ok), new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     dialog.cancel();
                 }
@@ -199,7 +204,7 @@ public class QuestList extends Activity implements ServiceConnection {
                 aboutDialogBuilder.setCancelable(true);
                 aboutDialogBuilder.setIcon(R.drawable.ic_launcher);
 
-                aboutDialogBuilder.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                aboutDialogBuilder.setNegativeButton(getString(R.string.quests_ok), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }
@@ -217,18 +222,18 @@ public class QuestList extends Activity implements ServiceConnection {
     @Override
     public void onBackPressed() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setTitle("Exit Application?");
-        alertDialogBuilder.setMessage("Click yes to exit!");
+        alertDialogBuilder.setTitle(getString(R.string.exit_title));
+        alertDialogBuilder.setMessage(getString(R.string.exit_message));
         alertDialogBuilder.setCancelable(false);
         alertDialogBuilder.setIcon(R.drawable.ic_launcher);
 
-        alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 QuestList.this.finish();
             }
         });
 
-        alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
             }

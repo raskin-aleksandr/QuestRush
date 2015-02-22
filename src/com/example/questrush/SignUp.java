@@ -29,11 +29,6 @@ public class SignUp extends Activity {
 		EditText pass1 = (EditText) findViewById(R.id.newPassword1);
 		EditText pass2 = (EditText) findViewById(R.id.newPassword2);
 
-		name.setHint("enter your name");
-		email.setHint("e-mail");
-		pass1.setHint("password");
-		pass2.setHint("password");
-
 		if (pass1.getText().toString().equals(pass2.getText().toString())) {
 
 			final ParseUser user = new ParseUser();
@@ -43,8 +38,8 @@ public class SignUp extends Activity {
 			user.setPassword(pass1.getText().toString());
 			
 			pd = new ProgressDialog(this);
-			pd.setTitle("New account");
-			pd.setMessage("Saving..");
+			pd.setTitle(getString(R.string.sign_up_new_acc));
+			pd.setMessage(getString(R.string.sugn_up_saving));
 			pd.show();
 			
 			user.signUpInBackground(new SignUpCallback() {
@@ -55,7 +50,7 @@ public class SignUp extends Activity {
 					if (e == null) {
 						User.getInstance().setmUser(ParseUser.getCurrentUser());
 						startActivity(new Intent(getApplicationContext(), QuestList.class));
-						Toast.makeText(getApplicationContext(), "account created", Toast.LENGTH_SHORT).show();
+						Toast.makeText(getApplicationContext(), getString(R.string.sign_up_created), Toast.LENGTH_SHORT).show();
 					}
 					else {
 						Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
@@ -65,7 +60,7 @@ public class SignUp extends Activity {
 			});
 		}
 		else {
-			Toast.makeText(getApplicationContext(), "Passwords do not match", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), getString(R.string.sign_up_password_do_not_match), Toast.LENGTH_SHORT).show();
 		}
 	}
 

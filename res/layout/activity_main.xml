@@ -13,7 +13,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:onClick="login"
-        android:text="Login with exitsting account" />
+        android:text="@string/main_login_with" />
     
     <Button
         android:id="@+id/createNewAccount"
@@ -23,7 +23,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:onClick="createNew"
-        android:text="Create new account" />
+        android:text="@string/main_create_new" />
 
     <ImageView
         android:id="@+id/imageView1"
