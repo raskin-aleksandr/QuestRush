@@ -1,6 +1,7 @@
 package com.example.questrush;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -20,6 +21,8 @@ public class QuestionActivity extends Activity {
     private List<ParseObject> questionList = null;
     private Random randMachine = null;
     private int currentQuestionNumber;
+    private String qestionId;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +34,7 @@ public class QuestionActivity extends Activity {
         questions.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> list, ParseException e) {
-                if ( e == null) {
+                if (e == null) {
                     if (list.isEmpty()) {
                         Toast.makeText(getApplicationContext(), "This Quest doesn not contain tasks!", Toast.LENGTH_LONG).show();
                         finish();
@@ -57,18 +60,26 @@ public class QuestionActivity extends Activity {
         int nextQuestionNumber = randMachine.nextInt(questionList.size());
         ParseObject nextQuestion = questionList.get(nextQuestionNumber);
         questionList.remove(nextQuestionNumber);
-        TextView description = (TextView)findViewById(R.id.questionDescription);
+        TextView description = (TextView) findViewById(R.id.questionDescription);
         description.setText("Question #" + currentQuestionNumber);
         ++currentQuestionNumber;
-        TextView questionText = (TextView)findViewById(R.id.questionText);
+        TextView questionText = (TextView) findViewById(R.id.questionText);
         questionText.setText(nextQuestion.getString("question"));
+        qestionId = nextQuestion.getObjectId();
         return true;
     }
 
-    public void onSubmit(View view) {
-        // get next question from list and fill form
-        if(true) {
-            if( !setNextQuestion() ) {
+    public void Scan(View view) {
+        Intent scan = new Intent(getApplicationContext(), AnswerScan.class);
+        scan.putExtra("result", qestionId);
+        startActivityForResult(scan, 1, null);
+    }
+
+
+    public void onSubmit() {
+// get next question from list and fill form
+        if (true) {
+            if (!setNextQuestion()) {
                 Toast.makeText(getApplicationContext(),
                         "You could drink or smoke but you decided to play n Quest!" +
                                 "Congratulations! You have finished it!!",
@@ -76,5 +87,17 @@ public class QuestionActivity extends Activity {
                 //TODO: Show congratulations activity
             }
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode == RESULT_OK) {
+//            Toast.makeText(getApplicationContext(), data.getExtras().getString("code"), Toast.LENGTH_SHORT).show();
+            System.out.println("ok");
+            onSubmit();
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

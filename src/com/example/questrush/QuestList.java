@@ -63,7 +63,7 @@ public class QuestList extends Activity implements ServiceConnection {
 
         if (time.getTime() > questDate.getTime()) {
             Intent intent = new Intent(getApplicationContext(), QuestionActivity.class);
-            intent.putExtra("questID", questID);
+            intent.putExtra("quest_id", questID);
             startActivity(intent);
         } else {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(QuestList.this);

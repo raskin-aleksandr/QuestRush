@@ -28,6 +28,6 @@
             android:layout_height="wrap_content"
             android:text="Submit"
             android:id="@+id/submitButton" android:layout_gravity="center_horizontal"
-            android:onClick="onSubmit"
+            android:onClick="Scan"
             android:layout_weight = "1"/>
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.example.questrush;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.hardware.Camera;
 import android.hardware.Camera.AutoFocusCallback;
@@ -11,6 +12,7 @@ import android.os.Handler;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import android.widget.Toast;
 import net.sourceforge.zbar.Config;
 import net.sourceforge.zbar.Image;
 import net.sourceforge.zbar.ImageScanner;
@@ -32,6 +34,8 @@ public class AnswerScan extends Activity {
     private String lastScannedCode;
     private Image codeImage;
 
+    private String rightCode;
+
     static {
         System.loadLibrary("iconv");
     }
@@ -43,11 +47,11 @@ public class AnswerScan extends Activity {
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        rightCode = this.getIntent().getExtras().getString("result");
 
         autoFocusHandler = new Handler();
 
         preview = (FrameLayout) findViewById(R.id.cameraPreview);
-
 
         /* Instance barcode scanner */
         scanner = new ImageScanner();
@@ -117,7 +121,7 @@ public class AnswerScan extends Activity {
 
     PreviewCallback previewCb = new PreviewCallback() {
         public void onPreviewFrame(byte[] data, Camera camera) {
-//            Log.d("CameraTestActivity", "onPreviewFrame data length = " + (data != null ? data.length : 0));
+// Log.d("CameraTestActivity", "onPreviewFrame data length = " + (data != null ? data.length : 0));
             codeImage.setData(data);
             int result = scanner.scanImage(codeImage);
             if (result != 0) {
@@ -125,14 +129,29 @@ public class AnswerScan extends Activity {
                 for (Symbol sym : syms) {
                     lastScannedCode = sym.getData();
                     if (lastScannedCode != null) {
-                        scanText.setText(getString(R.string.scan_result_label) + lastScannedCode);
+                        scanText.setText(getString(R.string.scan_result_label) + lastScannedCode + " result " + rightCode);
                         barcodeScanned = true;
+                        if (lastScannedCode.equals(rightCode)) {
+                            Intent intent = new Intent();
+                            setResult(RESULT_OK, intent);
+                            finish();
+                        } else {
+                            // TODO: make some dialog
+                        }
                     }
                 }
             }
             camera.addCallbackBuffer(data);
         }
     };
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent();
+        setResult(RESULT_CANCELED, intent);
+        finish();
+    }
 
     // Mimic continuous auto-focusing
     final AutoFocusCallback autoFocusCB = new AutoFocusCallback() {
