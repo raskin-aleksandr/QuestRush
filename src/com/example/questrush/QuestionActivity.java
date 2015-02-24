@@ -85,6 +85,7 @@ public class QuestionActivity extends Activity {
                                 "Congratulations! You have finished it!!",
                         Toast.LENGTH_LONG).show();
                 //TODO: Show congratulations activity
+                startActivity(new Intent(getApplicationContext(), FinishActivity.class));
             }
         }
     }
