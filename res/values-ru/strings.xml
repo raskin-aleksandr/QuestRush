@@ -35,7 +35,7 @@
     <string name="no">Нет</string>
 
     <string name="scan_process_label">Сканируется…</string>
-    <string name="scan_label">Scan</string>
+    <string name="scan_label">Сканировать</string>
     <string name="scan_result_label">Last scan result: </string>
     <string name="login_enter_login">введите имя пользователя</string>
     <string name="exit_message">Нажми Да для выхода</string>
@@ -47,13 +47,13 @@
     <string name="sign_up_password_do_not_match">Пароли не совпадают</string>
     <string name="quest_list_do_you_want">Хотите прянять участие?</string>
     <string name="scan_wrong_answer">Не верный QR код</string>
-    <string name="scan_try_again">QR код не совпадает с вопросом. Попробуйте найти правельный код</string>
+    <string name="scan_try_again">QR код не совпадает с вопросом. Попробуйте найти правельный код!</string>
     <string name="quit_message">Если вы выйдете, то весь прогресс будет потерян!</string>
     <string name="quit_title">Вы уверенны?</string>
     <string name="login_reset_pass">Возобновить пароль</string>
     <string name="reset_email">введите e-mail</string>
     <string name="reset_send">сбросить пароль</string>
-    <string name="reset_title">Востановление пароля</string>
+    <string name="reset_title">Воcстановление пароля</string>
     <string name="reset_toast">Письмо отправлено на:</string>
 
 </resources>

@@ -52,13 +52,13 @@
     <string name="quest_list_do_you_want">Do you want to take part?</string>
     <string name="qust_list_clik_yes_to_part">Click yes to participate</string>
     <string name="scan_wrong_answer">Wrong QR</string>
-    <string name="scan_try_again">QR code do no match to question. Please find correct QR code</string>
+    <string name="scan_try_again">QR code do no match to question. Please find correct QR code!</string>
     <string name="quit_title">Are you shure?</string>
     <string name="quit_message">If you quit, all quest progress will be lost!</string>
     <string name="login_reset_pass">Reset password</string>
     <string name="reset_email">enter e-mail</string>
     <string name="reset_send">reset password</string>
-    <string name="reset_title">Password reser</string>
+    <string name="reset_title">Password reset</string>
     <string name="reset_toast">E-mail send to:</string>
 
 </resources>
