@@ -1,6 +1,8 @@
 package com.example.questrush;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -77,7 +79,7 @@ public class QuestionActivity extends Activity {
 
 
     public void onSubmit() {
-// get next question from list and fill form
+//          get next question from list and fill form
         if (true) {
             if (!setNextQuestion()) {
                 Toast.makeText(getApplicationContext(),
@@ -100,5 +102,29 @@ public class QuestionActivity extends Activity {
         }
 
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        AlertDialog.Builder quitDialog = new AlertDialog.Builder(this);
+        quitDialog.setTitle(getString(R.string.quit_title));
+        quitDialog.setMessage(getString(R.string.quit_message));
+        quitDialog.setCancelable(false);
+        quitDialog.setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        quitDialog.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                QuestionActivity.this.finish();
+            }
+        });
+
+        AlertDialog quit = quitDialog.create();
+        quit.show();
     }
 }

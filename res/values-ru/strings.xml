@@ -46,5 +46,9 @@
     <string name="sign_up_created">Учетная запись создана</string>
     <string name="sign_up_password_do_not_match">Пароли не совпадают</string>
     <string name="quest_list_do_you_want">Хотите прянять участие?</string>
+    <string name="scan_wrong_answer">Не верный QR код</string>
+    <string name="scan_try_again">QR код не совпадает с вопросом. Попробуйте найти правельный код</string>
+    <string name="quit_message">Если вы выйдете, то весь прогресс будет потерян!</string>
+    <string name="quit_title">Вы уверенны?</string>
 
 </resources>

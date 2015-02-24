@@ -51,5 +51,9 @@
     <string name="sign_up_password_do_not_match">Passwords do not match</string>
     <string name="quest_list_do_you_want">Do you want to take part?</string>
     <string name="qust_list_clik_yes_to_part">Click yes to participate</string>
+    <string name="scan_wrong_answer">Wrong QR</string>
+    <string name="scan_try_again">QR code do no match to question. Please find correct QR code</string>
+    <string name="quit_title">Are you shure?</string>
+    <string name="quit_message">If you quit, all quest progress will be lost!</string>
 
 </resources>

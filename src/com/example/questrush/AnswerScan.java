@@ -1,6 +1,8 @@
 package com.example.questrush;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.hardware.Camera;
@@ -129,14 +131,26 @@ public class AnswerScan extends Activity {
                 for (Symbol sym : syms) {
                     lastScannedCode = sym.getData();
                     if (lastScannedCode != null) {
-                        scanText.setText(getString(R.string.scan_result_label) + lastScannedCode + " result " + rightCode);
                         barcodeScanned = true;
                         if (lastScannedCode.equals(rightCode)) {
                             Intent intent = new Intent();
                             setResult(RESULT_OK, intent);
                             finish();
                         } else {
-                            // TODO: make some dialog
+                            AlertDialog.Builder wrongDialogBuilder = new AlertDialog.Builder(AnswerScan.this);
+                            wrongDialogBuilder.setTitle(getString(R.string.scan_wrong_answer));
+                            wrongDialogBuilder.setMessage(getString(R.string.scan_try_again));
+                            wrongDialogBuilder.setCancelable(true);
+                            wrongDialogBuilder.setPositiveButton(getString(R.string.quests_ok), new DialogInterface.OnClickListener (){
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.cancel();
+                                    resumeCamera();
+                                }
+                            });
+                            AlertDialog wrongAnswer = wrongDialogBuilder.create();
+                            releaseCamera();
+                            wrongAnswer.show();
                         }
                     }
                 }

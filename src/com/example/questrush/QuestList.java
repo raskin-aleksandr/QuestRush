@@ -129,21 +129,8 @@ public class QuestList extends Activity implements ServiceConnection {
                 break;
 
             case R.id.about:
-                AlertDialog.Builder aboutDialogBuilder = new AlertDialog.Builder(QuestList.this);
-                aboutDialogBuilder.setTitle("About Quest Rush");
-                aboutDialogBuilder.setMessage("___");
-                aboutDialogBuilder.setCancelable(true);
-                aboutDialogBuilder.setIcon(R.drawable.ic_launcher);
 
-                aboutDialogBuilder.setNegativeButton(getString(R.string.quests_ok), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-                AlertDialog aboutDialog = aboutDialogBuilder.create();
-                aboutDialog.show();
-
-
+                startActivity(new Intent(getApplicationContext(), About.class));
                 break;
         }
 
