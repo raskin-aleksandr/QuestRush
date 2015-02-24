@@ -42,10 +42,8 @@ public class QuestList extends Activity implements ServiceConnection {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, final int pos, long l) {
-
                 Intent questInfo = new Intent(getApplication(), QuestInfo.class);
                 questInfo.putExtra("ID", Quests.getIntance().getQuestsVector().get(pos).getQuestID());
-
                 startActivity(questInfo);
             }
         });
@@ -99,7 +97,6 @@ public class QuestList extends Activity implements ServiceConnection {
 
     @Override
     public void onServiceDisconnected(ComponentName componentName) {
-
         unbindService(this);
     }
 
@@ -129,7 +126,6 @@ public class QuestList extends Activity implements ServiceConnection {
                 break;
 
             case R.id.about:
-
                 startActivity(new Intent(getApplicationContext(), About.class));
                 break;
         }

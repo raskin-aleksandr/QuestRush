@@ -50,5 +50,10 @@
     <string name="scan_try_again">QR код не совпадает с вопросом. Попробуйте найти правельный код</string>
     <string name="quit_message">Если вы выйдете, то весь прогресс будет потерян!</string>
     <string name="quit_title">Вы уверенны?</string>
+    <string name="login_reset_pass">Возобновить пароль</string>
+    <string name="reset_email">введите e-mail</string>
+    <string name="reset_send">сбросить пароль</string>
+    <string name="reset_title">Востановление пароля</string>
+    <string name="reset_toast">Письмо отправлено на:</string>
 
 </resources>

@@ -1,37 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/loginName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:ems="10"
-        android:hint="@string/login_enter_login"
-        android:inputType="textPersonName" >
+            android:id="@+id/loginName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:ems="10"
+            android:hint="@string/login_enter_login"
+            android:inputType="textPersonName">
 
-        <requestFocus />
+        <requestFocus/>
     </EditText>
 
     <EditText
-        android:id="@+id/loginPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/loginName"
-        android:ems="10"
-        android:hint="@string/login_enter_password"
-        android:inputType="textPassword" />
+            android:id="@+id/loginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/loginName"
+            android:ems="10"
+            android:hint="@string/login_enter_password"
+            android:inputType="textPassword"/>
 
     <Button
-        android:id="@+id/loginB"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/loginPassword"
-        android:text="@string/login_login_button" />
+            android:id="@+id/loginButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/loginPassword"
+            android:text="@string/login_login_button"/>
+
+    <Button
+            android:id="@+id/resetButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_reset_pass"
+            android:layout_below="@id/loginButton"
+            android:layout_alignParentStart="true" android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>
