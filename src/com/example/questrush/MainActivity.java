@@ -112,10 +112,4 @@ public class MainActivity extends Activity {
 
             alertDialog.show();
         }
-	
-	
-	
-	
-	
-	
 }

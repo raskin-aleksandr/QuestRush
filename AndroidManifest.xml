@@ -43,6 +43,7 @@
         </activity>
         <activity android:name=".AnswerScan" android:label="Questions"/>
         <activity android:name=".QuestionActivity"/>
+        <activity android:name=".QuestInfo" android:label="QuestInfo"/>
 
         <service android:name=".QuestsService"></service>
     </application>
