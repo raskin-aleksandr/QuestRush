@@ -67,7 +67,7 @@ public class QuestInfo extends Activity {
                                         calendarIntent.setType("vnd.android.cursor.item/event");
                                         calendarIntent.putExtra("title", "Quest Rush: " + parseObject.getString("name"));
                                         calendarIntent.putExtra("description", parseObject.getString("description"));
-//                                        calendarIntent.putExtra("beginTime", Quests.getIntance().getQuestsVector().get(pos).getQuestDate());
+                                        calendarIntent.putExtra("beginTime", parseObject.getDate("startTime").getTime());
                                         calendarIntent.putExtra("allDay", false);
                                         calendarIntent.putExtra("endTime", cal.getTimeInMillis() + 60 * 60 * 1000);
                                         startActivity(calendarIntent);

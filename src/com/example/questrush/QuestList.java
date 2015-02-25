@@ -27,12 +27,6 @@ public class QuestList extends Activity implements ServiceConnection {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quest_list);
 
-
-        Intent intent = new Intent(getApplicationContext(), QuestsService.class);
-        startService(intent);
-
-        bindService(intent, this, 0);
-
         questsAdapter = new QuestsAdapter(getApplicationContext(), this);
 
         lv = (ListView) findViewById(R.id.questListView);
@@ -97,13 +91,23 @@ public class QuestList extends Activity implements ServiceConnection {
 
     @Override
     public void onServiceDisconnected(ComponentName componentName) {
-        unbindService(this);
+        //unbindService(this);
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onStop() {
+        super.onStop();
         unbindService(this);
+        Intent intent = new Intent(getApplicationContext(), QuestsService.class);
+        stopService(intent);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Intent intent = new Intent(getApplicationContext(), QuestsService.class);
+        startService(intent);
+        bindService(intent, this, 0);
     }
 
     @Override
