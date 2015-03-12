@@ -8,7 +8,7 @@
     <ImageView
             android:layout_width="match_parent"
             android:layout_height="@dimen/sign_logo_h"
-            android:id="@+id/signin_logo"
+            android:id="@+id/signup_logo"
             android:src="@drawable/signup_bg"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"/>
@@ -24,7 +24,7 @@
             android:hint="@string/sign_up_enter_name"
             android:ems="10"
             android:id="@+id/newName"
-            android:layout_below="@+id/signin_logo"
+            android:layout_below="@+id/signup_logo"
             android:layout_alignParentStart="true" >
 
         <requestFocus />

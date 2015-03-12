@@ -3,11 +3,22 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/sign_logo_h"
+            android:id="@+id/reset_logo"
+            android:src="@drawable/header_pic_hello"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"/>
 
     <EditText
-            android:id="@+id/resetEmail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/edit_text_h"
+            android:gravity="center|bottom"
+            android:layout_marginLeft="@dimen/edit_text_margin_lr"
+            android:layout_marginRight="@dimen/edit_text_margin_lr"
+
+            android:id="@+id/resetEmail"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:ems="10"
@@ -17,6 +28,12 @@
     </EditText>
 
     <Button
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/sign_cancel_button"
+            android:textColor="@color/sign_button_text_color"
+
             android:id="@+id/resetSend"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

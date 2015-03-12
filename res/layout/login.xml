@@ -3,23 +3,40 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-    <EditText
-            android:id="@+id/loginName"
+    <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:layout_height="@dimen/sign_logo_h"
+            android:id="@+id/signin_logo"
+            android:src="@drawable/header_pic_signin"
             android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"/>
+
+
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edit_text_h"
+            android:gravity="center|bottom"
+            android:layout_marginLeft="@dimen/edit_text_margin_lr"
+            android:layout_marginRight="@dimen/edit_text_margin_lr"
+
+            android:id="@+id/loginName"
             android:ems="10"
             android:hint="@string/login_enter_login"
-            android:inputType="textPersonName">
+            android:inputType="textPersonName"
+            android:layout_below="@+id/signin_logo"
+            android:layout_alignParentLeft="true">
 
         <requestFocus/>
     </EditText>
 
     <EditText
-            android:id="@+id/loginPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/edit_text_h"
+            android:gravity="center|bottom"
+            android:layout_marginLeft="@dimen/edit_text_margin_lr"
+            android:layout_marginRight="@dimen/edit_text_margin_lr"
+
+            android:id="@+id/loginPassword"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/loginName"
             android:ems="10"
@@ -27,6 +44,13 @@
             android:inputType="textPassword"/>
 
     <Button
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="60dp"
+            android:background="@color/sign_cancel_button"
+            android:textColor="@color/sign_button_text_color"
+
+
             android:id="@+id/loginButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -35,6 +59,12 @@
             android:text="@string/login_login_button"/>
 
     <Button
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/sign_cancel_button"
+            android:textColor="@color/sign_button_text_color"
+
             android:id="@+id/resetButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
