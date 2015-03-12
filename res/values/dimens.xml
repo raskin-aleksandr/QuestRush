@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="sign_logo_h">198dp</dimen>
+
+    <dimen name="edit_text_h">60dp</dimen>
+    <dimen name="edit_text_margin_lr">20dp</dimen>
+
+
+    <dimen name="button_h">45dp</dimen>
+    <dimen name="button_w">142dp</dimen>
+    <dimen name="button_margin_tb">41dp</dimen>
+    <dimen name="button_margin_lr">35dp</dimen>
+    <dimen name="button_text_size">12sp</dimen>
+
+
+
+</resources>

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/QuestRush.iml" filepath="$PROJECT_DIR$/QuestRush.iml" />
+      <module fileurl="file://C:/android/sdk/extras/android/support/v7/appcompat/android-support-v7-appcompat.iml" filepath="C:/android/sdk/extras/android/support/v7/appcompat/android-support-v7-appcompat.iml" />
     </modules>
   </component>
 </project>

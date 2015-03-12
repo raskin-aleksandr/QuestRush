@@ -4,77 +4,105 @@
     android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}" >
 
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/sign_logo_h"
+            android:id="@+id/signin_logo"
+            android:src="@drawable/signup_bg"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"/>
+
     <EditText
-        android:id="@+id/newName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:hint="@string/sign_up_enter_name"
-        android:inputType="textPersonName" >
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edit_text_h"
+            android:gravity="center|bottom"
+            android:layout_marginLeft="@dimen/edit_text_margin_lr"
+            android:layout_marginRight="@dimen/edit_text_margin_lr"
+
+            android:inputType="textPersonName"
+            android:hint="@string/sign_up_enter_name"
+            android:ems="10"
+            android:id="@+id/newName"
+            android:layout_below="@+id/signin_logo"
+            android:layout_alignParentStart="true" >
 
         <requestFocus />
     </EditText>
 
     <EditText
-        android:id="@+id/newEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/newName"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:hint="@string/sign_up_enter_email"
-        android:inputType="textEmailAddress" />
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edit_text_h"
+            android:gravity="center|bottom"
+            android:layout_marginLeft="@dimen/edit_text_margin_lr"
+            android:layout_marginRight="@dimen/edit_text_margin_lr"
+
+            android:inputType="textEmailAddress"
+            android:hint="@string/sign_up_enter_email"
+            android:ems="10"
+            android:id="@+id/newEmail"
+            android:layout_below="@id/newName"
+            android:layout_alignParentStart="true"/>
 
     <EditText
-        android:id="@+id/newPassword1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/newEmail"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:hint="@string/sign_up_password"
-        android:inputType="textPassword" />
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edit_text_h"
+            android:gravity="center|bottom"
+            android:layout_marginLeft="@dimen/edit_text_margin_lr"
+            android:layout_marginRight="@dimen/edit_text_margin_lr"
+
+            android:inputType="textPassword"
+            android:hint="@string/sign_up_password"
+            android:ems="10"
+            android:id="@+id/newPass1"
+            android:layout_below="@id/newEmail"
+            android:layout_alignParentStart="true"/>
 
     <EditText
-        android:id="@+id/newPassword2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/newPassword1"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:hint="@string/sign_up_password"
-        android:inputType="textPassword" />
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edit_text_h"
+            android:gravity="center|bottom"
+            android:layout_marginLeft="@dimen/edit_text_margin_lr"
+            android:layout_marginRight="@dimen/edit_text_margin_lr"
+
+            android:inputType="textPassword"
+            android:hint="@string/sign_up_password"
+            android:ems="10"
+            android:id="@+id/newPass2"
+            android:layout_below="@id/newPass1"
+            android:layout_alignParentStart="true"/>
 
     <Button
-        android:id="@+id/cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/newPassword2"
-        android:layout_below="@+id/newPassword2"
-        android:layout_marginTop="22dp"
-        android:onClick="cancel"
-        android:text="@string/sign_up_cancel" />
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="@dimen/button_w"
+            android:layout_height="@dimen/button_h"
+            android:textSize="@dimen/button_text_size"
+            android:layout_marginStart="@dimen/button_margin_lr"
+            android:layout_marginTop="@dimen/button_margin_tb"
+            android:background="@color/sign_cancel_button"
+            android:textColor="@color/sign_button_text_color"
+
+            android:text="@string/sign_up_cancel"
+            android:id="@+id/cancel"
+            android:onClick="cancel"
+            android:layout_below="@id/newPass2"
+            android:layout_alignParentStart="true"/>
 
     <Button
-        android:id="@+id/create"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/newPassword2"
-        android:layout_alignTop="@+id/cancel"
-        android:onClick="create"
-        android:text="@string/sign_up_create" />
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="@dimen/button_w"
+            android:layout_height="@dimen/button_h"
+            android:textSize="@dimen/button_text_size"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="@dimen/button_margin_tb"
+            android:background="@color/sign_sign_button"
+            android:textColor="@color/sign_button_text_color"
+
+            android:text="@string/sign_up_create"
+            android:onClick="create"
+            android:id="@+id/create"
+            android:layout_below="@id/newPass2"
+            android:layout_toEndOf="@id/cancel"/>
+
 
 </RelativeLayout>

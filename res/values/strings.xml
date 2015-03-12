@@ -22,8 +22,8 @@
     <string name="sign_up_enter_name">enter your name</string>
     <string name="sign_up_enter_email">enter your e-mail</string>
     <string name="sign_up_password">enter password</string>
-    <string name="sign_up_cancel">Cancel</string>
-    <string name="sign_up_create">Create Account</string>
+    <string name="sign_up_cancel">CANCEL</string>
+    <string name="sign_up_create">CREATE ACCOUNT</string>
 
     <string name="sign_up_new_acc">New account</string>
     <string name="sugn_up_saving">Saving..</string>

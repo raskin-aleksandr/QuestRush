@@ -16,8 +16,8 @@
     <string name="sign_up_enter_name">введите ваше имя</string>
     <string name="sign_up_enter_email">введите e-mail</string>
     <string name="sign_up_password">введите пароль</string>
-    <string name="sign_up_cancel">Отмена</string>
-    <string name="sign_up_create">Создать учетную запись</string>
+    <string name="sign_up_cancel">ОТМЕНА</string>
+    <string name="sign_up_create">ЗАРЕГИСТРИРОВАТЬСЯ</string>
 
     <string name="quests_title">Доступные квесты</string>
     <string name="quests_starts_at">Старт:</string>

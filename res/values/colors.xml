@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="sign_cancel_button">#077d8e</color>
+    <color name="sign_sign_button">#db1675</color>
+    <color name="sign_button_text_color">#ffffff</color>
+
+</resources>
