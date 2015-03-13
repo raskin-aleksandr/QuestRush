@@ -47,7 +47,7 @@
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
             android:layout_marginTop="60dp"
-            android:background="@color/sign_cancel_button"
+            android:background="@color/button_color"
             android:textColor="@color/sign_button_text_color"
 
 
@@ -62,7 +62,7 @@
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
             android:layout_marginTop="20dp"
-            android:background="@color/sign_cancel_button"
+            android:background="@color/button_color"
             android:textColor="@color/sign_button_text_color"
 
             android:id="@+id/resetButton"

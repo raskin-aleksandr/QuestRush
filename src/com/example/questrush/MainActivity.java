@@ -27,8 +27,6 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ImageView iv = (ImageView) findViewById(R.id.imageView1);
-//        iv.setImageResource(R.drawable.index);
 
         ParseUser currentUser = ParseUser.getCurrentUser();
 

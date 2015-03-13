@@ -2,36 +2,48 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="85dp">
+                android:background="#5076bebf"
+                android:layout_height="87dp">
     <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_height="16dp"
             android:text="Quest name"
             android:id="@+id/questName"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="12dp"
+            android:textSize="16dp"
+            android:gravity="center|bottom"
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"/>
+            android:layout_alignParentStart="true"
+            android:ellipsize="end"
+            />
     <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_height="16dp"
+            android:layout_marginTop="8dp"
+            android:textSize="16dp"
+            android:gravity="center|bottom"
             android:text="shortDescription"
             android:id="@+id/shortDescription"
             android:layout_below="@id/questName"
-            android:layout_alignStart="@id/questName"/>
+            android:layout_alignStart="@id/questName"
+            android:ellipsize="end"/>
     <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_height="16dp"
+            android:layout_marginTop="10dp"
+            android:textSize="16dp"
+            android:gravity="center|bottom"
             android:text="Medium Text"
             android:id="@+id/time"
             android:layout_below="@+id/shortDescription"
             android:layout_alignStart="@+id/shortDescription"/>
     <ImageView
-            android:layout_width="75dp"
-            android:layout_height="85dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="35dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:id="@+id/startImage"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"/>

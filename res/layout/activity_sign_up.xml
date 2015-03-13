@@ -79,7 +79,7 @@
             android:textSize="@dimen/button_text_size"
             android:layout_marginStart="@dimen/button_margin_lr"
             android:layout_marginTop="@dimen/button_margin_tb"
-            android:background="@color/sign_cancel_button"
+            android:background="@color/button_color"
             android:textColor="@color/sign_button_text_color"
 
             android:text="@string/sign_up_cancel"
@@ -95,7 +95,7 @@
             android:textSize="@dimen/button_text_size"
             android:layout_marginStart="32dp"
             android:layout_marginTop="@dimen/button_margin_tb"
-            android:background="@color/sign_sign_button"
+            android:background="@color/button_color"
             android:textColor="@color/sign_button_text_color"
 
             android:text="@string/sign_up_create"
