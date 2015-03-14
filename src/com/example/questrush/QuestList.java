@@ -5,14 +5,10 @@ import android.app.AlertDialog;
 import android.content.*;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import com.parse.ParseUser;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 public class QuestList extends Activity implements ServiceConnection {
@@ -47,7 +43,6 @@ public class QuestList extends Activity implements ServiceConnection {
             @Override
             public void onClick(View view) {
                 showPopupMenu(view);
-//                openOptionsMenu();
             }
         });
 
@@ -78,43 +73,6 @@ public class QuestList extends Activity implements ServiceConnection {
             }
         });
         popupMenu.show();
-    }
-
-
-
-
-
-
-    //    public void start (int i){
-//        Toast.makeText(getApplicationContext(), "" + i, Toast.LENGTH_SHORT).show();
-//    }
-    public void start(String questID, Date questDate) {
-
-        SimpleDateFormat df = new SimpleDateFormat("dd-MMM (EEE) HH:mm");
-
-        String formattedDate = df.format(questDate);
-
-        Date time = new Date();
-        time.getTime();
-
-        if (time.getTime() > questDate.getTime()) {
-            Intent intent = new Intent(getApplicationContext(), QuestionActivity.class);
-            intent.putExtra("quest_id", questID);
-            startActivity(intent);
-        } else {
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(QuestList.this);
-            alertDialogBuilder.setTitle(getString(R.string.quests_to_early));
-            alertDialogBuilder.setMessage(getString(R.string.quests_starts_at) + formattedDate);
-            alertDialogBuilder.setPositiveButton(getString(R.string.quests_ok), new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    dialog.cancel();
-                }
-            });
-
-            AlertDialog alertDialog = alertDialogBuilder.create();
-            alertDialog.show();
-        }
-
     }
 
     public void update() {
@@ -153,33 +111,6 @@ public class QuestList extends Activity implements ServiceConnection {
         startService(intent);
         bindService(intent, this, 0);
     }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu, menu);
-//        return super.onCreateOptionsMenu(menu);
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//
-//        switch (item.getItemId()) {
-//            case R.id.logout:
-//                ParseUser.getCurrentUser().logOut();
-//
-//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                startActivity(intent);
-//
-//                break;
-//
-//            case R.id.about:
-//                startActivity(new Intent(getApplicationContext(), About.class));
-//                break;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 
     @Override
     public void onBackPressed() {

@@ -41,13 +41,17 @@
                 android:name=".SignUp"
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
-                android:name=".AnswerScan" android:label="Questions"/>
+                android:name=".AnswerScan" android:label="Questions"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
-                android:name=".QuestionActivity"/>
+                android:name=".QuestionActivity"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
-                android:name=".QuestInfo" android:label="QuestInfo"/>
+                android:name=".QuestInfo" android:label="QuestInfo"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
-                android:name=".FinishActivity" android:label="Finish"/>
+                android:name=".FinishActivity" android:label="Finish"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
                 android:name=".About" android:label="About"
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>

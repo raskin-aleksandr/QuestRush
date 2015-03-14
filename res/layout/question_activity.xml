@@ -1,35 +1,50 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:weightSum="3">
 
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:id="@+id/question_info_logo"
+            android:src="@drawable/quest1_pic"
+            android:scaleType="centerCrop"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"/>
 
     <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
+            android:layout_marginTop="35dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_below="@+id/question_info_logo"
             android:text="Question is loading"
-            android:id="@+id/questionDescription"/>
+            android:id="@+id/questionNubmer"/>
+
     <TextView
             android:layout_width="fill_parent"
-            android:layout_height="250dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Waiting for question downloaded..."
-            android:id="@+id/questionText"
-            android:layout_gravity="center_horizontal"
-            />
-    <FrameLayout
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            >
-    </FrameLayout>
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
+
+            android:textSize="18sp"
+
+            android:text="Waiting for question downloaded..."
+            android:id="@+id/question_text"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@+id/questionNubmer"
+            />
+
+
     <Button
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="35dp"
             android:background="@color/button_color"
             android:textColor="@color/sign_button_text_color"
 
@@ -38,6 +53,7 @@
             android:text="Submit"
             android:id="@+id/submitButton"
             android:layout_gravity="center_horizontal"
+            android:layout_alignParentBottom="true"
             android:onClick="Scan"
             />
-</LinearLayout>
+</RelativeLayout>

@@ -1,13 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:id="@+id/quest_info_logo"
+            android:src="@drawable/quest1_pic"
+            android:scaleType="centerCrop"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"/>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="LOADING.."
+            android:id="@+id/questName"
+            android:layout_below="@+id/quest_info_logo"
+            android:layout_alignParentStart="true"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginBottom="115dp"
+            android:text="loading.."
+            android:textSize="18sp"
+            android:id="@+id/questInfo"
+            android:maxLines ="100000"
+            android:scrollbars = "vertical"
+            android:layout_below="@+id/questName"
+            android:layout_alignParentStart="true"/>
 
     <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:id="@+id/sign_unsign_button"
-            android:layout_gravity="center_horizontal"/>
-</LinearLayout>
+            android:layout_width="@dimen/button_w"
+            android:layout_height="@dimen/button_h"
+
+            android:background="@color/button_color"
+            android:textColor="@color/sign_button_text_color"
+
+            android:layout_marginStart="35dp"
+            android:layout_marginBottom="35dp"
+            android:layout_marginEnd="10dp"
+
+            android:text="REG"
+            android:id="@+id/register"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"/>
+
+    <Button
+            android:layout_width="@dimen/button_w"
+            android:layout_height="@dimen/button_h"
+
+            android:background="@color/button_color"
+            android:textColor="@color/sign_button_text_color"
+
+            android:layout_marginEnd="35dp"
+            android:layout_marginBottom="35dp"
+            android:layout_marginStart="10dp"
+
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:text="START"
+            android:onClick="startQuest"
+            android:id="@+id/start"/>
+
+</RelativeLayout>

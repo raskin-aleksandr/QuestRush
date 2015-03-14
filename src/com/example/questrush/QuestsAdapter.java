@@ -93,13 +93,13 @@ public class QuestsAdapter extends BaseAdapter {
             iv.setImageResource(R.drawable.lock_icon);
         }
 
-        iv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                parent.start(i);
-                parent.start(Quests.getIntance().getQuestsVector().get(i).getQuestID(), Quests.getIntance().getQuestsVector().get(i).getQuestDate());
-            }
-        });
+//        iv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+////                parent.start(i);
+//                parent.start(Quests.getIntance().getQuestsVector().get(i).getQuestID(), Quests.getIntance().getQuestsVector().get(i).getQuestDate());
+//            }
+//        });
         return rl;
     }
 }

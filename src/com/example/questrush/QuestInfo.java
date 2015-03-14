@@ -1,16 +1,22 @@
 package com.example.questrush;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.parse.*;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class QuestInfo extends Activity {
 
@@ -21,28 +27,66 @@ public class QuestInfo extends Activity {
 
     Button signUnsign;
 
+    TextView questName;
+    TextView questInfo;
+    Date questDate;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quest_info);
 
+        questName = (TextView) findViewById(R.id.questName);
+        questInfo = (TextView) findViewById(R.id.questInfo);
+        questInfo.setMovementMethod(new ScrollingMovementMethod());
+
         ID = getIntent().getStringExtra("ID");
-        signUnsign = (Button) findViewById(R.id.sign_unsign_button);
+        signUnsign = (Button) findViewById(R.id.register);
         query.getInBackground(ID, new GetCallback<ParseObject>() {
             @Override
             public void done(ParseObject parseObject, ParseException e) {
                 if (e == null) {
+                    questName.setText(parseObject.getString("name"));
+                    questInfo.setText(parseObject.getString("description"));
+
+                    questDate = parseObject.getDate("startTime");
+
                     participantsJSONArray = parseObject.getJSONArray("participants");
                     if (participantsJSONArray.toString().contains(UserID)) {
                         signUnsign.setText("Unsign");
                         unSign();
                     } else {
-                        signUnsign.setText("Sign");
+                        signUnsign.setText("SIGN IN");
                         sign();
                     }
                 }
             }
         });
+    }
+
+    public void startQuest(View view) {
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM (EEE) HH:mm");
+        String formattedDate = df.format(questDate);
+
+        Date time = new Date();
+        time.getTime();
+
+        if (time.getTime() > questDate.getTime()) {
+            Intent intent = new Intent(getApplicationContext(), QuestionActivity.class);
+            intent.putExtra("quest_id", ID);
+            startActivity(intent);
+        } else {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(QuestInfo.this);
+            alertDialogBuilder.setTitle(getString(R.string.quests_to_early));
+            alertDialogBuilder.setMessage(getString(R.string.quests_starts_at) + formattedDate);
+            alertDialogBuilder.setPositiveButton(getString(R.string.quests_ok), new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.cancel();
+                }
+            });
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }
     }
 
     public void sign() {
@@ -73,7 +117,7 @@ public class QuestInfo extends Activity {
                                         startActivity(calendarIntent);
 
                                         Toast.makeText(getApplicationContext(), "Signed", Toast.LENGTH_SHORT).show();
-                                        signUnsign.setText("Unsign");
+                                        signUnsign.setText("UNSIGN");
                                         unSign();
 
                                     } else {

@@ -62,10 +62,10 @@ public class QuestionActivity extends Activity {
         int nextQuestionNumber = randMachine.nextInt(questionList.size());
         ParseObject nextQuestion = questionList.get(nextQuestionNumber);
         questionList.remove(nextQuestionNumber);
-        TextView description = (TextView) findViewById(R.id.questionDescription);
+        TextView description = (TextView) findViewById(R.id.questionNubmer);
         description.setText("Question #" + currentQuestionNumber);
         ++currentQuestionNumber;
-        TextView questionText = (TextView) findViewById(R.id.questionText);
+        TextView questionText = (TextView) findViewById(R.id.question_text);
         questionText.setText(nextQuestion.getString("question"));
         qestionId = nextQuestion.getObjectId();
         return true;
