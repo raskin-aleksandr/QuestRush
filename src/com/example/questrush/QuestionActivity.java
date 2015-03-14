@@ -82,11 +82,6 @@ public class QuestionActivity extends Activity {
 //          get next question from list and fill form
         if (true) {
             if (!setNextQuestion()) {
-                Toast.makeText(getApplicationContext(),
-                        "You could drink or smoke but you decided to play n Quest!" +
-                                "Congratulations! You have finished it!!",
-                        Toast.LENGTH_LONG).show();
-                //TODO: Show congratulations activity
                 startActivity(new Intent(getApplicationContext(), FinishActivity.class));
             }
         }
