@@ -30,7 +30,7 @@ public class QuestsAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return i;
     }
 
     @Override
@@ -42,19 +42,39 @@ public class QuestsAdapter extends BaseAdapter {
     public View getView(final int i, View view, ViewGroup viewGroup) {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
         RelativeLayout rl = (RelativeLayout) inflater.inflate(R.layout.quest, viewGroup, false);
 
+        switch (i % 6) {
+            case 0:
+                rl.setBackgroundColor(0x6676bebf);
+                break;
+            case 1:
+                rl.setBackgroundColor(0x66db1675);
+                break;
+            case 2:
+                rl.setBackgroundColor(0x66e8a820);
+                break;
+            case 3:
+                rl.setBackgroundColor(0x66fb0740);
+                break;
+            case 4:
+                rl.setBackgroundColor(0x66034561);
+                break;
+            case 5:
+                rl.setBackgroundColor(0x66dda037);
+                break;
+        }
+
         TextView name = (TextView) rl.findViewById(R.id.questName);
-        name.setTextColor(Color.BLACK);
-        name.setText(Quests.getIntance().getQuestsVector().get(i).getQuestName());
+        name.setTextColor(Color.WHITE);
+        name.setText(Quests.getIntance().getQuestsVector().get(i).getQuestName().toUpperCase());
 
         TextView descriptionShort = (TextView) rl.findViewById(R.id.shortDescription);
-        descriptionShort.setTextColor(Color.BLACK);
+        descriptionShort.setTextColor(Color.WHITE);
         descriptionShort.setText(Quests.getIntance().getQuestsVector().get(i).getQuestDescriptionShort());
 
         TextView time = (TextView) rl.findViewById(R.id.time);
-        time.setTextColor(Color.BLACK);
+        time.setTextColor(Color.WHITE);
 
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM (EEE) HH:mm");
 
@@ -68,24 +88,18 @@ public class QuestsAdapter extends BaseAdapter {
 
 
         if (Quests.getIntance().getQuestsVector().get(i).getQuestDate().getTime() < curTime.getTime()) {
-            iv.setImageResource(R.drawable.play_active);
+            iv.setImageResource(R.drawable.unlock_icon);
+        } else {
+            iv.setImageResource(R.drawable.lock_icon);
         }
-        else{
-            iv.setImageResource(R.drawable.play_inactive);
-        }
-
-
-        final QuestList ql = new QuestList();
 
         iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                parent.start(i);
                 parent.start(Quests.getIntance().getQuestsVector().get(i).getQuestID(), Quests.getIntance().getQuestsVector().get(i).getQuestDate());
             }
         });
-
         return rl;
     }
-
-
 }

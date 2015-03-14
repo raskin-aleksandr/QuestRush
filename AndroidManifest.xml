@@ -25,29 +25,35 @@
 
         <activity
                 android:name=".MainActivity"
-                android:label="@string/title_activity_main">
+                android:label="@string/title_activity_main"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
                 android:name=".QuestList"
-                android:label="@string/title_activity_quest_list">
+                android:label="@string/title_activity_quest_list"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
                 android:name=".SignUp"
-                android:label="@string/title_activity_sign_up"
-                android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-                <!--android:theme="@android:style/Theme.Material.Light.NoActionBar">-->
-
-        </activity>
-        <activity android:name=".AnswerScan" android:label="Questions"/>
-        <activity android:name=".QuestionActivity"/>
-        <activity android:name=".QuestInfo" android:label="QuestInfo"/>
-        <activity android:name=".FinishActivity" android:label="Finish"/>
-        <activity android:name=".About" android:label="About"/>
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+                android:name=".AnswerScan" android:label="Questions"/>
+        <activity
+                android:name=".QuestionActivity"/>
+        <activity
+                android:name=".QuestInfo" android:label="QuestInfo"/>
+        <activity
+                android:name=".FinishActivity" android:label="Finish"/>
+        <activity
+                android:name=".About" android:label="About"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+                android:name=".Login" android:label="Login"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
         <service android:name=".QuestsService"></service>
     </application>

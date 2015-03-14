@@ -42,21 +42,27 @@ public class SignUp extends ActionBarActivity {
             pd.setMessage(getString(R.string.sugn_up_saving));
             pd.show();
 
-            user.signUpInBackground(new SignUpCallback() {
 
-                @Override
-                public void done(ParseException e) {
-                    pd.cancel();
-                    if (e == null) {
-                        User.getInstance().setmUser(ParseUser.getCurrentUser());
-                        startActivity(new Intent(getApplicationContext(), QuestList.class));
-                        Toast.makeText(getApplicationContext(), getString(R.string.sign_up_created), Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+            try {
+                user.signUpInBackground(new SignUpCallback() {
+
+                    @Override
+                    public void done(ParseException e) {
+                        pd.cancel();
+                        if (e == null) {
+                            User.getInstance().setmUser(ParseUser.getCurrentUser());
+                            startActivity(new Intent(getApplicationContext(), QuestList.class));
+                            Toast.makeText(getApplicationContext(), getString(R.string.sign_up_created), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
                     }
-                }
 
-            });
+                });
+            } catch (Exception e) {
+                pd.cancel();
+                Toast.makeText(getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
         } else {
             Toast.makeText(getApplicationContext(), getString(R.string.sign_up_password_do_not_match), Toast.LENGTH_SHORT).show();
         }

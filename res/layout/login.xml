@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="${relativePackage}.${activityClass}">
 
     <ImageView
             android:layout_width="match_parent"
@@ -11,7 +14,6 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"/>
 
-
     <EditText
             android:layout_width="match_parent"
             android:layout_height="@dimen/edit_text_h"
@@ -19,12 +21,12 @@
             android:layout_marginLeft="@dimen/edit_text_margin_lr"
             android:layout_marginRight="@dimen/edit_text_margin_lr"
 
-            android:id="@+id/loginName"
-            android:ems="10"
-            android:hint="@string/login_enter_login"
             android:inputType="textPersonName"
+            android:hint="@string/login_enter_login"
+            android:ems="10"
+            android:id="@+id/loginName"
             android:layout_below="@+id/signin_logo"
-            android:layout_alignParentLeft="true">
+            android:layout_alignParentStart="true">
 
         <requestFocus/>
     </EditText>

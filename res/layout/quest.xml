@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:background="#5076bebf"
                 android:layout_height="87dp">
+
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="16dp"
@@ -42,7 +42,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:layout_marginRight="35dp"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/startImage"
             android:layout_alignParentTop="true"

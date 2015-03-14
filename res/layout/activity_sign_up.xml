@@ -1,9 +1,10 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="${relativePackage}.${activityClass}" >
-
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="${relativePackage}.${activityClass}">
 
     <ImageView
             android:layout_width="match_parent"
@@ -25,9 +26,9 @@
             android:ems="10"
             android:id="@+id/newName"
             android:layout_below="@+id/signup_logo"
-            android:layout_alignParentStart="true" >
+            android:layout_alignParentStart="true">
 
-        <requestFocus />
+        <requestFocus/>
     </EditText>
 
     <EditText
@@ -76,7 +77,7 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="@dimen/button_w"
             android:layout_height="@dimen/button_h"
-            android:textSize="@dimen/button_text_size"
+
             android:layout_marginStart="@dimen/button_margin_lr"
             android:layout_marginTop="@dimen/button_margin_tb"
             android:background="@color/button_color"
@@ -92,7 +93,6 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="@dimen/button_w"
             android:layout_height="@dimen/button_h"
-            android:textSize="@dimen/button_text_size"
             android:layout_marginStart="32dp"
             android:layout_marginTop="@dimen/button_margin_tb"
             android:background="@color/button_color"

@@ -1,16 +1,37 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/list_bg"
-    tools:context="${relativePackage}.${activityClass}" >
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/list_bg"
+                tools:context="${relativePackage}.${activityClass}">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="53dp"
+            android:text="QuestList"
+            android:textSize="16dp"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:paddingLeft="35dp"
+            android:id="@+id/header"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"/>
 
     <ListView
-        android:id="@+id/questListView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
+            android:id="@+id/questList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/header">
     </ListView>
+
+    <ImageButton
+            android:layout_width="53dp"
+            android:layout_height="53dp"
+            android:id="@+id/menuButton"
+            android:src="@drawable/abc_ic_menu_moreoverflow_mtrl_alpha"
+            android:background="@android:color/transparent"
+            android:layout_alignParentEnd="true"/>
+
 
 </RelativeLayout>

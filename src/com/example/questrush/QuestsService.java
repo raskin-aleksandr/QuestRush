@@ -51,7 +51,7 @@ public class QuestsService extends Service implements Runnable{
                 }
             });
 
-            SystemClock.sleep(500);
+            SystemClock.sleep(1000);
         }
     }
 

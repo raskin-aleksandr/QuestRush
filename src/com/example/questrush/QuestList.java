@@ -8,8 +8,7 @@ import android.os.IBinder;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.widget.*;
 import com.parse.ParseUser;
 
 import java.text.SimpleDateFormat;
@@ -21,6 +20,7 @@ public class QuestList extends Activity implements ServiceConnection {
     private QuestsAdapter questsAdapter;
     private QuestsService questsService;
     ListView lv;
+    ImageButton menuButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class QuestList extends Activity implements ServiceConnection {
 
         questsAdapter = new QuestsAdapter(getApplicationContext(), this);
 
-        lv = (ListView) findViewById(R.id.questListView);
+        lv = (ListView) findViewById(R.id.questList);
         lv.setAdapter(questsAdapter);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -41,9 +41,53 @@ public class QuestList extends Activity implements ServiceConnection {
                 startActivity(questInfo);
             }
         });
+
+        menuButton = (ImageButton) findViewById(R.id.menuButton);
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPopupMenu(view);
+//                openOptionsMenu();
+            }
+        });
+
+
+    }
+
+    private void showPopupMenu(View v) {
+        PopupMenu popupMenu = new PopupMenu(this, v);
+        popupMenu.inflate(R.menu.menu);
+
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.about:
+                        startActivity(new Intent(getApplicationContext(), About.class));
+                        return true;
+                    case R.id.logout:
+                        ParseUser.getCurrentUser().logOut();
+
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+        popupMenu.show();
     }
 
 
+
+
+
+
+    //    public void start (int i){
+//        Toast.makeText(getApplicationContext(), "" + i, Toast.LENGTH_SHORT).show();
+//    }
     public void start(String questID, Date questDate) {
 
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM (EEE) HH:mm");
@@ -110,12 +154,12 @@ public class QuestList extends Activity implements ServiceConnection {
         bindService(intent, this, 0);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
+//
 //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {
 //
