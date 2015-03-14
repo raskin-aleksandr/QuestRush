@@ -7,11 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 
-import java.sql.Time;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.TimeZone;
 
 public class QuestsAdapter extends BaseAdapter {
 
@@ -88,7 +85,7 @@ public class QuestsAdapter extends BaseAdapter {
 
 
         if (Quests.getIntance().getQuestsVector().get(i).getQuestDate().getTime() < curTime.getTime()) {
-            iv.setImageResource(R.drawable.unlock_icon);
+            iv.setImageResource(R.drawable.unlock_icon_);
         } else {
             iv.setImageResource(R.drawable.lock_icon);
         }

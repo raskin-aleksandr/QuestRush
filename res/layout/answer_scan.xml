@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@android:color/darker_gray" android:weightSum="1">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray">
 
     <FrameLayout
             android:id="@+id/cameraPreview"
             android:layout_width="match_parent"
-            android:layout_height="200dip"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@android:color/white" android:layout_weight="0.93"/>
+            android:background="@android:color/white"
+            />
 
     <TextView
             android:id="@+id/scanText"
+            android:gravity="center"
             android:text="@string/scan_process_label"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_margin="10dip"
+            android:layout_height="60dp"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
             android:layout_gravity="center_horizontal"
-            android:textColor="@android:color/black" />
+            android:background="@color/button_color"
+            android:textColor="@android:color/white"
+            android:layout_alignParentBottom="true"/>
 
 
-</LinearLayout>
+</RelativeLayout>

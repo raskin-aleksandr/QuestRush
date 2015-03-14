@@ -8,7 +8,7 @@
             android:layout_width="match_parent"
             android:layout_height="160dp"
             android:id="@+id/question_info_logo"
-            android:src="@drawable/quest1_pic"
+            android:src="@drawable/question_header"
             android:scaleType="centerCrop"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"/>
