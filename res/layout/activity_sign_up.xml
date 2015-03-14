@@ -11,6 +11,7 @@
             android:layout_height="@dimen/sign_logo_h"
             android:id="@+id/signup_logo"
             android:src="@drawable/signup_bg"
+            android:scaleType="centerCrop"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"/>
 

@@ -9,6 +9,7 @@
             android:layout_height="@dimen/sign_logo_h"
             android:id="@+id/abotut_logo"
             android:src="@drawable/header_about"
+            android:scaleType="centerCrop"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"/>
 
