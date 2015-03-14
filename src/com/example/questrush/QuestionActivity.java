@@ -16,9 +16,6 @@ import com.parse.ParseQuery;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Created by skyjack on 20.02.15.
- */
 public class QuestionActivity extends Activity {
     private List<ParseObject> questionList = null;
     private Random randMachine = null;
@@ -46,7 +43,6 @@ public class QuestionActivity extends Activity {
                     setNextQuestion();
 
                 } else {
-
                     // TODO: Add relevant exception handling
                     Toast.makeText(getApplicationContext(), "Failed ot retrieve quest questions", Toast.LENGTH_LONG).show();
                     finish();
@@ -79,7 +75,6 @@ public class QuestionActivity extends Activity {
 
 
     public void onSubmit() {
-//          get next question from list and fill form
         if (true) {
             if (!setNextQuestion()) {
                 startActivity(new Intent(getApplicationContext(), FinishActivity.class));
@@ -91,17 +86,13 @@ public class QuestionActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (resultCode == RESULT_OK) {
-//            Toast.makeText(getApplicationContext(), data.getExtras().getString("code"), Toast.LENGTH_SHORT).show();
-            System.out.println("ok");
             onSubmit();
         }
-
         super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
     public void onBackPressed() {
-//        super.onBackPressed();
         AlertDialog.Builder quitDialog = new AlertDialog.Builder(this);
         quitDialog.setTitle(getString(R.string.quit_title));
         quitDialog.setMessage(getString(R.string.quit_message));
