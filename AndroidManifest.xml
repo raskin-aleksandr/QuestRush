@@ -58,8 +58,6 @@
         <activity
                 android:name=".Login" android:label="Login"
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-
-        <service android:name=".QuestsService"></service>
     </application>
 
 </manifest>

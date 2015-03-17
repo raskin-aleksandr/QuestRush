@@ -33,5 +33,13 @@
             android:background="@android:color/transparent"
             android:layout_alignParentEnd="true"/>
 
+    <ImageButton
+            android:layout_width="53dp"
+            android:layout_height="53dp"
+            android:id="@+id/refreshButton"
+            android:src="@drawable/ic_action_navigation_refresh"
+            android:background="@android:color/transparent"
+            android:layout_above="@+id/questList" android:layout_toStartOf="@+id/menuButton"/>
+
 
 </RelativeLayout>

@@ -116,7 +116,6 @@ public class QuestInfo extends Activity {
                                         calendarIntent.putExtra("endTime", cal.getTimeInMillis() + 60 * 60 * 1000);
                                         startActivity(calendarIntent);
 
-                                        Toast.makeText(getApplicationContext(), "Signed", Toast.LENGTH_SHORT).show();
                                         signUnsign.setText("UNSIGN");
                                         unSign();
 
@@ -161,7 +160,6 @@ public class QuestInfo extends Activity {
                                 @Override
                                 public void done(ParseException e) {
                                     if (e == null) {
-                                        Toast.makeText(getApplicationContext(), "Unsigned", Toast.LENGTH_SHORT).show();
                                         signUnsign.setText("Sign");
                                         sign();
                                     } else {

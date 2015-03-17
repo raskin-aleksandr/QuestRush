@@ -8,15 +8,17 @@ import android.os.IBinder;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
-import com.parse.ParseUser;
+import com.parse.*;
+
+import java.util.List;
 
 
-public class QuestList extends Activity implements ServiceConnection {
+public class QuestList extends Activity{
 
     private QuestsAdapter questsAdapter;
-    private QuestsService questsService;
     ListView lv;
     ImageButton menuButton;
+    ImageButton refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +48,15 @@ public class QuestList extends Activity implements ServiceConnection {
             }
         });
 
+        refresh = (ImageButton) findViewById(R.id.refreshButton);
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                refresh();
+            }
+        });
 
+        refresh();
     }
 
     private void showPopupMenu(View v) {
@@ -75,6 +85,28 @@ public class QuestList extends Activity implements ServiceConnection {
         popupMenu.show();
     }
 
+    public void refresh (){
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("quests");
+        query.whereEqualTo("active", true);
+
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> questList, ParseException e) {
+                if (e == null){
+                    Quests.getIntance().getQuestsVector().clear();
+                    for (ParseObject po : questList){
+                        Quests quest = new Quests(po.getObjectId(), po.getString("name"), po.getString("description_short"), po.getString("description"), po.getDate("startTime"),po.getInt("state"));
+                        Quests.getIntance().getQuestsVector().add(quest);
+                        update();
+                    }
+                }
+                else {
+                    System.out.println("from Quests service: " + e.getMessage());
+                }
+            }
+        });
+    }
+
     public void update() {
         runOnUiThread(new Runnable() {
             @Override
@@ -82,34 +114,6 @@ public class QuestList extends Activity implements ServiceConnection {
                 lv.invalidateViews();
             }
         });
-    }
-
-    @Override
-    public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-        QuestsBinder binder = (QuestsBinder) iBinder;
-        questsService = binder.getService();
-        questsService.setActivity(this);
-    }
-
-    @Override
-    public void onServiceDisconnected(ComponentName componentName) {
-        //unbindService(this);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        unbindService(this);
-        Intent intent = new Intent(getApplicationContext(), QuestsService.class);
-        stopService(intent);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Intent intent = new Intent(getApplicationContext(), QuestsService.class);
-        startService(intent);
-        bindService(intent, this, 0);
     }
 
     @Override
